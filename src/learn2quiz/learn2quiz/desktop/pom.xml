@@ -13,7 +13,7 @@
 	<name>Learn2Quiz desktop</name>
 
 	<properties>
-		<mainClass>de.fhkoeln.gm.eis.ss15.learn2quiz.java.Learn2QuizDesktop</mainClass>
+		<mainClass>de.fhkoeln.gm.eis.ss15.learn2quiz.client.desktop.Learn2QuizDesktop</mainClass>
 	</properties>
 
 	<dependencies>
@@ -42,6 +42,16 @@
 			<groupId>com.underwaterapps.overlap2druntime</groupId>
 			<artifactId>overlap2d-runtime-libgdx</artifactId>
 			<version>0.0.9</version>
+		</dependency>
+		<dependency>
+			<groupId>org.igniterealtime.smack</groupId>
+			<artifactId>smack</artifactId>
+			<version>3.2.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.igniterealtime.smack</groupId>
+			<artifactId>smackx</artifactId>
+			<version>3.2.1</version>
 		</dependency>
 	</dependencies>
 

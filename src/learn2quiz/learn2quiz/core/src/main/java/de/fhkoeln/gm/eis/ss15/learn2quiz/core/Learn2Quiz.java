@@ -11,14 +11,11 @@ public class Learn2Quiz implements ApplicationListener {
 	Texture texture;
 	SpriteBatch batch;
 	float elapsed;
-	private Boolean gameStarted;
-	
-	private GameStage stage;
 
 	@Override
 	public void create () {
-		stage = new GameStage(this);
-		gameStarted = true;
+		texture = new Texture(Gdx.files.internal("libgdx-logo.png"));
+		batch = new SpriteBatch();
 	}
 
 	@Override
@@ -27,12 +24,12 @@ public class Learn2Quiz implements ApplicationListener {
 
 	@Override
 	public void render () {
-		Gdx.gl.glClearColor(0.8f, 0.8f, 0.8f, 1);
-		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		if (gameStarted) {
-			stage.act();
-			stage.draw();
-		}
+		elapsed += Gdx.graphics.getDeltaTime();
+		Gdx.gl.glClearColor(0, 0, 0, 0);
+		Gdx.gl.glClear(GL30.GL_COLOR_BUFFER_BIT);
+		batch.begin();
+		batch.draw(texture, 100+100*(float)Math.cos(elapsed), 100+25*(float)Math.sin(elapsed));
+		batch.end();
 	}
 
 	@Override
@@ -45,11 +42,5 @@ public class Learn2Quiz implements ApplicationListener {
 
 	@Override
 	public void dispose () {
-		Gdx.app.exit();
-	}
-
-	public void startGame() {
-		// TODO Auto-generated method stub
-		gameStarted = true;
 	}
 }
