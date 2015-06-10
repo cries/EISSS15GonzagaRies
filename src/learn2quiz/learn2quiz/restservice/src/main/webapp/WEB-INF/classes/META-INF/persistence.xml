@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ 
+<persistence version="2.1"
+    xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+    <persistence-unit name="learn2quizPU" transaction-type="JTA">
+        <jta-data-source>jdbc/learn2quiz</jta-data-source>
+        <class>de.fhkoeln.gm.eis.ss15.learn2quiz.service.entities.Tbleinladung</class>
+        <class>de.fhkoeln.gm.eis.ss15.learn2quiz.service.entities.Tblerhaelt</class>
+        <class>de.fhkoeln.gm.eis.ss15.learn2quiz.service.entities.TblerhaeltPK</class>
+        <class>de.fhkoeln.gm.eis.ss15.learn2quiz.service.entities.Tblgruppe</class>
+        <class>de.fhkoeln.gm.eis.ss15.learn2quiz.service.entities.TblistTeil</class>
+        <class>de.fhkoeln.gm.eis.ss15.learn2quiz.service.entities.TblistTeilPK</class>
+        <class>de.fhkoeln.gm.eis.ss15.learn2quiz.service.entities.Tblkarteikarte</class>
+        <class>de.fhkoeln.gm.eis.ss15.learn2quiz.service.entities.Tblkartenset</class>
+        <class>de.fhkoeln.gm.eis.ss15.learn2quiz.service.entities.Tblkommentar</class>
+        <class>de.fhkoeln.gm.eis.ss15.learn2quiz.service.entities.Tblspielsession</class>
+        <class>de.fhkoeln.gm.eis.ss15.learn2quiz.service.entities.Tblspielt</class>
+        <class>de.fhkoeln.gm.eis.ss15.learn2quiz.service.entities.TblspieltPK</class>
+        <class>de.fhkoeln.gm.eis.ss15.learn2quiz.service.entities.Tbluser</class>
+    </persistence-unit>
+</persistence>
