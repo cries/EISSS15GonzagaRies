@@ -15,12 +15,12 @@ import java.sql.Timestamp;
  */
 @XmlRootElement
 @Entity
-@NamedQuery(name="TblistTeil.findAll", query="SELECT t FROM TblistTeil t")
-public class TblistTeil implements Serializable {
+@NamedQuery(name="Tblistteil.findAll", query="SELECT t FROM Tblistteil t")
+public class Tblistteil implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@EmbeddedId
-	private TblistTeilPK id;
+	private TblistteilPK id;
 
 	private Timestamp dtTimestamp;
 
@@ -34,14 +34,14 @@ public class TblistTeil implements Serializable {
 	@JoinColumn(name="fiUser")
 	private Tbluser tbluser;
 
-	public TblistTeil() {
+	public Tblistteil() {
 	}
 
-	public TblistTeilPK getId() {
+	public TblistteilPK getId() {
 		return this.id;
 	}
 
-	public void setId(TblistTeilPK id) {
+	public void setId(TblistteilPK id) {
 		this.id = id;
 	}
 

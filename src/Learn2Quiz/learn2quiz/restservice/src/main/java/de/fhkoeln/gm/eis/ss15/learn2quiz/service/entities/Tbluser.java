@@ -48,7 +48,7 @@ public class Tbluser implements Serializable {
 
 	//bi-directional many-to-one association to TblistTeil
 	@OneToMany(mappedBy="tbluser")
-	private List<TblistTeil> tblistteils;
+	private List<Tblistteil> tblistteils;
 
 	//bi-directional many-to-one association to Tblkarteikarte
 	@OneToMany(mappedBy="tbluser")
@@ -175,22 +175,22 @@ public class Tbluser implements Serializable {
 		return tblgruppe;
 	}
 
-	public List<TblistTeil> getTblistteils() {
+	public List<Tblistteil> getTblistteils() {
 		return this.tblistteils;
 	}
 
-	public void setTblistteils(List<TblistTeil> tblistteils) {
+	public void setTblistteils(List<Tblistteil> tblistteils) {
 		this.tblistteils = tblistteils;
 	}
 
-	public TblistTeil addTblistteil(TblistTeil tblistteil) {
+	public Tblistteil addTblistteil(Tblistteil tblistteil) {
 		getTblistteils().add(tblistteil);
 		tblistteil.setTbluser(this);
 
 		return tblistteil;
 	}
 
-	public TblistTeil removeTblistteil(TblistTeil tblistteil) {
+	public Tblistteil removeTblistteil(Tblistteil tblistteil) {
 		getTblistteils().remove(tblistteil);
 		tblistteil.setTbluser(null);
 
