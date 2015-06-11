@@ -6,13 +6,29 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.InputMultiplexer;
+import com.uwsoft.editor.renderer.resources.ResourceManager;
 
 public class Learn2Quiz implements ApplicationListener {
+	
 	private GameStage myGameStage;
-
+	private MenuStage myMenuStage;
+	private ResourceManager rm;
+	private InputMultiplexer inputMultiplexer;
+	
 	@Override
 	public void create () {
-		myGameStage = new GameStage();
+		inputMultiplexer = new InputMultiplexer();
+		ResourceManager rm = new ResourceManager();
+		rm.initAllResources();
+		
+		myGameStage = new GameStage(rm);
+		myMenuStage = new MenuStage(myGameStage);
+		
+		inputMultiplexer.addProcessor(myGameStage);
+		inputMultiplexer.addProcessor(myMenuStage);
+		
+		Gdx.input.setInputProcessor(inputMultiplexer);
 	}
 
 	@Override
@@ -21,10 +37,14 @@ public class Learn2Quiz implements ApplicationListener {
 
 	@Override
 	public void render () {
-		Gdx.gl.glClearColor(0, 0, 0, 1);
+		Gdx.gl.glClearColor(0.4f, 0.4f, 0.4f, 1);
 		Gdx.gl.glClear(GL30.GL_COLOR_BUFFER_BIT);
 		
+		myGameStage.act();
 		myGameStage.draw();
+		
+		myMenuStage.act();
+		myMenuStage.draw();
 	}
 
 	@Override
