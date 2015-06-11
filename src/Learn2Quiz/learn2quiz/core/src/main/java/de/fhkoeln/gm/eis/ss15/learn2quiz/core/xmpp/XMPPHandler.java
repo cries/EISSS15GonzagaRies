@@ -1,4 +1,4 @@
-package de.fhkoeln.gm.eis.ss15.learn2quiz.client.xmpp;
+package de.fhkoeln.gm.eis.ss15.learn2quiz.core.xmpp;
 
 import java.util.ArrayList;
 import java.util.Iterator;

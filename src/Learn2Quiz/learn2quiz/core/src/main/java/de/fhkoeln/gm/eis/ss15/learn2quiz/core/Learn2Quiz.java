@@ -5,57 +5,84 @@ import com.badlogic.gdx.graphics.GL30;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.ApplicationListener;
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
+import com.uwsoft.editor.renderer.SceneLoader;
 import com.uwsoft.editor.renderer.resources.ResourceManager;
 
-public class Learn2Quiz implements ApplicationListener {
+import de.fhkoeln.gm.eis.ss15.learn2quiz.core.screens.LoginScreen;
+import de.fhkoeln.gm.eis.ss15.learn2quiz.core.screens.WelcomeScreen;
+import de.fhkoeln.gm.eis.ss15.learn2quiz.core.stages.LoginStage;
+import de.fhkoeln.gm.eis.ss15.learn2quiz.core.stages.WelcomeStage;
+import de.fhkoeln.gm.eis.ss15.learn2quiz.core.xmpp.XMPPHandler;
+
+public class Learn2Quiz extends Game {
 	
-	private GameStage myGameStage;
-	private MenuStage myMenuStage;
-	private ResourceManager rm;
-	private InputMultiplexer inputMultiplexer;
+	public XMPPHandler myXMPPHandler;
+	public ResourceManager myResourceHandler;
+	
+	public final String title = "Learn2Quiz";
+	public final String version = "v0.1";
+	
+	public WelcomeScreen myWelcomeScreen;
+	public LoginScreen myLoginScreen;
+	
+	public InputMultiplexer myInputMultiplexer;
+	public SceneLoader mySceneLoader;
+	
+	private WelcomeStage myGameStage;
+	private LoginStage myMenuStage;
 	
 	@Override
 	public void create () {
-		inputMultiplexer = new InputMultiplexer();
-		ResourceManager rm = new ResourceManager();
-		rm.initAllResources();
+		myXMPPHandler = new XMPPHandler();
+		myResourceHandler = new ResourceManager();
+		myInputMultiplexer = new InputMultiplexer();
+		mySceneLoader = new SceneLoader(myResourceHandler);
+		myResourceHandler.initAllResources();
 		
-		myGameStage = new GameStage(rm);
-		myMenuStage = new MenuStage(myGameStage);
-		
-		inputMultiplexer.addProcessor(myGameStage);
-		inputMultiplexer.addProcessor(myMenuStage);
-		
-		Gdx.input.setInputProcessor(inputMultiplexer);
+		myWelcomeScreen = new WelcomeScreen(this);
+		//myLoginScreen = new LoginScreen(this);
+		setScreen(myWelcomeScreen);
 	}
 
 	@Override
 	public void resize (int width, int height) {
+		super.resize(width, height);
 	}
 
 	@Override
 	public void render () {
+		
 		Gdx.gl.glClearColor(0.4f, 0.4f, 0.4f, 1);
 		Gdx.gl.glClear(GL30.GL_COLOR_BUFFER_BIT);
 		
-		myGameStage.act();
-		myGameStage.draw();
+		//myGameStage.act();
+		//myGameStage.draw();
 		
-		myMenuStage.act();
-		myMenuStage.draw();
+		//myMenuStage.act();
+		//myMenuStage.draw();
+		super.render();
 	}
 
 	@Override
 	public void pause () {
+		super.pause();
 	}
 
 	@Override
 	public void resume () {
+		super.resume();
 	}
 
 	@Override
 	public void dispose () {
+		super.dispose();
+	}
+	
+	public void showLogin() {
+		myLoginScreen = new LoginScreen(this);
+		setScreen(myLoginScreen);
 	}
 }

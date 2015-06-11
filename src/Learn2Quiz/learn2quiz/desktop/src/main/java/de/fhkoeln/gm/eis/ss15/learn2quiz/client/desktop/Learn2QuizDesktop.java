@@ -4,8 +4,8 @@ import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 
 import de.fhkoeln.gm.eis.ss15.learn2quiz.core.Learn2Quiz;
-import de.fhkoeln.gm.eis.ss15.learn2quiz.client.xmpp.ItemLoggingHandler;
-import de.fhkoeln.gm.eis.ss15.learn2quiz.client.xmpp.XMPPHandler;
+import de.fhkoeln.gm.eis.ss15.learn2quiz.core.xmpp.ItemLoggingHandler;
+import de.fhkoeln.gm.eis.ss15.learn2quiz.core.xmpp.XMPPHandler;
 
 public class Learn2QuizDesktop {
 	private static DesktopApp myDesktopApp;

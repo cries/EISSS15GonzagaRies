@@ -1,68 +1,40 @@
 
 pack.png
-size: 2048,1024
+size: 2048,128
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
-Background
-  rotate: false
-  xy: 2, 210
-  size: 1026, 770
-  orig: 1026, 770
-  offset: 0, 0
-  index: -1
-Einloggen
-  rotate: false
-  xy: 2, 106
-  size: 322, 102
-  orig: 322, 102
-  offset: 0, 0
-  index: -1
 einloggennormal
-  rotate: false
-  xy: 2, 106
-  size: 322, 102
-  orig: 322, 102
-  offset: 0, 0
-  index: -1
-Unbenannt-2
-  rotate: false
-  xy: 1030, 774
-  size: 322, 102
-  orig: 322, 102
-  offset: 0, 0
-  index: -1
-einloggenpressed
-  rotate: false
-  xy: 1030, 878
-  size: 322, 102
-  orig: 322, 102
-  offset: 0, 0
-  index: -1
-ok
-  rotate: false
-  xy: 326, 52
-  size: 92, 52
-  orig: 92, 52
-  offset: 0, 0
-  index: -1
-plus
-  rotate: false
-  xy: 1354, 924
-  size: 98, 56
-  orig: 98, 56
-  offset: 0, 0
-  index: -1
-registrierennormal
   rotate: false
   xy: 2, 2
   size: 322, 102
   orig: 322, 102
   offset: 0, 0
   index: -1
+einloggenpressed
+  rotate: false
+  xy: 326, 2
+  size: 322, 102
+  orig: 322, 102
+  offset: 0, 0
+  index: -1
+input
+  rotate: false
+  xy: 1298, 52
+  size: 302, 52
+  orig: 302, 52
+  offset: 0, 0
+  index: -1
+registrierennormal
+  rotate: false
+  xy: 650, 2
+  size: 322, 102
+  orig: 322, 102
+  offset: 0, 0
+  index: -1
 registrierenpressed
   rotate: false
-  xy: 326, 106
+  xy: 974, 2
   size: 322, 102
   orig: 322, 102
   offset: 0, 0
