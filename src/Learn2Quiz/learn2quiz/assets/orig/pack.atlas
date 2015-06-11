@@ -1,12 +1,33 @@
 
 pack.png
-size: 256,64
+size: 2048,1024
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
+Background
+  rotate: false
+  xy: 2, 164
+  size: 1026, 770
+  orig: 1026, 770
+  offset: 0, 0
+  index: -1
+Einloggen
+  rotate: false
+  xy: 2, 60
+  size: 322, 102
+  orig: 322, 102
+  offset: 0, 0
+  index: -1
+Unbenannt-2
+  rotate: false
+  xy: 1030, 832
+  size: 322, 102
+  orig: 322, 102
+  offset: 0, 0
+  index: -1
 ok
   rotate: false
-  xy: 102, 6
+  xy: 326, 110
   size: 92, 52
   orig: 92, 52
   offset: 0, 0

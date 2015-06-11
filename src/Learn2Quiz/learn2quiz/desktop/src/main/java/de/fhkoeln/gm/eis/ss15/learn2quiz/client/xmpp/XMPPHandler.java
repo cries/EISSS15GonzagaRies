@@ -25,7 +25,7 @@ import org.jivesoftware.smackx.pubsub.Subscription;
 import org.jivesoftware.smackx.pubsub.listener.ItemEventListener;
 
 
-public class XMPPConnectionHandler<listener> {
+public class XMPPHandler {
 	private XMPPConnection xmppConn;
 	private AccountManager accMngr;
 	private PubSubManager pubSubMngr;
@@ -33,7 +33,7 @@ public class XMPPConnectionHandler<listener> {
 	private String username;
 	private ItemEventListener<Item> listener;
 
-	public XMPPConnectionHandler(){
+	public XMPPHandler(){
 	}
 	
 	public boolean connect(String hostname, int port){
@@ -49,7 +49,7 @@ public class XMPPConnectionHandler<listener> {
 		
 		try{
 			xmppConn.connect();
-			pubSubMngr = new PubSubManager(xmppConn, "pubsub." + xmppConn.getHost());
+			pubSubMngr = new PubSubManager(xmppConn, "pubsub.localhost" );
 		} catch(XMPPException e){
 			System.out.println(e);
 			return false;
@@ -204,7 +204,7 @@ public class XMPPConnectionHandler<listener> {
 	
 	public void addItemListener(ItemEventListener<Item> listener) {
         this.listener = listener;
-        attachListenerToSubNodes();
+        //attachListenerToSubNodes();
     }
 	
 	private void attachListenerToSubNodes() {
