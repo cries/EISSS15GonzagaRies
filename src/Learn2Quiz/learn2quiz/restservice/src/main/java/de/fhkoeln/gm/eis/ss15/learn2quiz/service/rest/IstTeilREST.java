@@ -24,7 +24,7 @@ import javax.ws.rs.core.UriInfo;
 
 import de.fhkoeln.gm.eis.ss15.learn2quiz.service.entities.Tblistteil;
 
-@Path("/group")
+@Path("/istteil")
 @Produces ({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
 @Consumes ({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
 @Stateless
