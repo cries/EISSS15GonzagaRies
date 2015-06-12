@@ -22,9 +22,9 @@ public class WelcomeStage extends Stage {
 	
 	public WelcomeStage(Learn2Quiz game){
 		myGame = game;
-		myXMPPHandler = game.myXMPPHandler;
-		myResourceMgr = game.myResourceHandler;
-		mySceneLoader = game.mySceneLoader;
+		myXMPPHandler = myGame.myXMPPHandler;
+		myResourceMgr = myGame.myResourceHandler;
+		mySceneLoader = myGame.mySceneLoader;
 		loadScene("MainScene");
 		addActor(mySceneLoader.getRoot());
 		
@@ -43,7 +43,7 @@ public class WelcomeStage extends Stage {
                 //restarting game when clicked
                 //gameStage.restart();
             	System.out.println("Click: Registrieren");
-            	//myGame.showRegister();
+            	myGame.showRegister();
             }
         });
         

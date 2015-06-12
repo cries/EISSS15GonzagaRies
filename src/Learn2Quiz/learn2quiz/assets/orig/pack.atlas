@@ -1,41 +1,118 @@
 
 pack.png
-size: 2048,128
+size: 2048,512
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
+SchlieﬂenButton
+  rotate: false
+  xy: 914, 65
+  size: 105, 63
+  orig: 105, 63
+  offset: 0, 0
+  index: -1
+SchlieﬂenButtonPressed
+  rotate: false
+  xy: 1021, 65
+  size: 105, 63
+  orig: 105, 63
+  offset: 0, 0
+  index: -1
+breadcrumb1normal
+  rotate: false
+  xy: 306, 12
+  size: 209, 42
+  orig: 209, 42
+  offset: 0, 0
+  index: -1
+breadcrumb1pressed
+  rotate: false
+  xy: 703, 86
+  size: 209, 42
+  orig: 209, 42
+  offset: 0, 0
+  index: -1
+einladungennormal
+  rotate: false
+  xy: 1159, 254
+  size: 208, 124
+  orig: 208, 124
+  offset: 0, 0
+  index: -1
+einladungenpressed
+  rotate: false
+  xy: 1369, 254
+  size: 208, 124
+  orig: 208, 124
+  offset: 0, 0
+  index: -1
 einloggennormal
   rotate: false
-  xy: 2, 2
-  size: 322, 102
-  orig: 322, 102
+  xy: 703, 380
+  size: 454, 123
+  orig: 454, 123
   offset: 0, 0
   index: -1
 einloggenpressed
   rotate: false
-  xy: 326, 2
-  size: 322, 102
-  orig: 322, 102
+  xy: 703, 255
+  size: 454, 123
+  orig: 454, 123
+  offset: 0, 0
+  index: -1
+gruppennormal
+  rotate: false
+  xy: 1615, 379
+  size: 208, 124
+  orig: 208, 124
+  offset: 0, 0
+  index: -1
+gruppenpressed
+  rotate: false
+  xy: 1825, 379
+  size: 208, 124
+  orig: 208, 124
   offset: 0, 0
   index: -1
 input
   rotate: false
-  xy: 1298, 52
+  xy: 2, 2
   size: 302, 52
   orig: 302, 52
   offset: 0, 0
   index: -1
+placeholder
+  rotate: false
+  xy: 2, 56
+  size: 699, 447
+  orig: 699, 447
+  offset: 0, 0
+  index: -1
 registrierennormal
   rotate: false
-  xy: 650, 2
-  size: 322, 102
-  orig: 322, 102
+  xy: 1159, 380
+  size: 454, 123
+  orig: 454, 123
   offset: 0, 0
   index: -1
 registrierenpressed
   rotate: false
-  xy: 974, 2
-  size: 322, 102
-  orig: 322, 102
+  xy: 703, 130
+  size: 454, 123
+  orig: 454, 123
+  offset: 0, 0
+  index: -1
+spielstartennormal
+  rotate: false
+  xy: 1159, 128
+  size: 208, 124
+  orig: 208, 124
+  offset: 0, 0
+  index: -1
+spielstartenpressed
+  rotate: false
+  xy: 1369, 128
+  size: 208, 124
+  orig: 208, 124
   offset: 0, 0
   index: -1

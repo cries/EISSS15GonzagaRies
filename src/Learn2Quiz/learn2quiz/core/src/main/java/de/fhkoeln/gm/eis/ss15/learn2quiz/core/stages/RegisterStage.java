@@ -1,9 +1,7 @@
 package de.fhkoeln.gm.eis.ss15.learn2quiz.core.stages;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextField;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.uwsoft.editor.renderer.SceneLoader;
@@ -13,8 +11,7 @@ import com.uwsoft.editor.renderer.script.SimpleButtonScript;
 import de.fhkoeln.gm.eis.ss15.learn2quiz.core.Learn2Quiz;
 import de.fhkoeln.gm.eis.ss15.learn2quiz.core.xmpp.XMPPHandler;
 
-public class LoginStage extends Stage {
-	
+public class RegisterStage extends Stage {
 	public ResourceManager myResourceMgr;
 	public SceneLoader mySceneLoader;
 	public XMPPHandler myXMPPHandler;
@@ -22,20 +19,22 @@ public class LoginStage extends Stage {
 	private Boolean connected = false;
 	private TextField txtUsername;
 	private TextField txtPassword;
+	private TextField txtValPassword;
+	private TextField txtEmail;
 	
-    public LoginStage(Learn2Quiz game) {
-    	myGame = game;
+	public RegisterStage(Learn2Quiz game) {
+		myGame = game;
 		myXMPPHandler = myGame.myXMPPHandler;
 		myResourceMgr = myGame.myResourceHandler;
 		mySceneLoader = myGame.mySceneLoader;
-		loadScene("LoginScene");
+		loadScene("RegisterScene");
 		addActor(mySceneLoader.getRoot());
 		
 		txtUsername = new TextField("", game.mySkin);
     	txtUsername.setMessageText("Benutzername");
     	txtUsername.setWidth(452);
     	txtUsername.setHeight(40);
-    	txtUsername.setPosition(286, 446);
+    	txtUsername.setPosition(286, 608);
     	addActor(txtUsername);
     	
     	txtPassword = new TextField("", game.mySkin);
@@ -44,28 +43,35 @@ public class LoginStage extends Stage {
     	txtPassword.setPasswordMode(true);
     	txtPassword.setWidth(452);
     	txtPassword.setHeight(40);
-    	txtPassword.setPosition(286, 364);
+    	txtPassword.setPosition(286, 526);
     	addActor(txtPassword);
+    	
+    	txtValPassword = new TextField("", game.mySkin);
+    	txtValPassword.setMessageText("Passwort wiederholen");
+    	txtValPassword.setPasswordCharacter('*');
+    	txtValPassword.setPasswordMode(true);
+    	txtValPassword.setWidth(452);
+    	txtValPassword.setHeight(40);
+    	txtValPassword.setPosition(286, 446);
+    	addActor(txtValPassword);
+    	
+    	txtEmail = new TextField("", game.mySkin);
+    	txtEmail.setMessageText("Email-Adresse");
+    	txtEmail.setWidth(452);
+    	txtEmail.setHeight(40);
+    	txtEmail.setPosition(286, 364);
+    	addActor(txtEmail);
 		
-		SimpleButtonScript btnLogin = SimpleButtonScript.selfInit(mySceneLoader.getRoot().getCompositeById("btnLogin"));
-        btnLogin.addListener(new ClickListener() {
+		SimpleButtonScript btnRegister = SimpleButtonScript.selfInit(mySceneLoader.getRoot().getCompositeById("btnRegister"));
+        btnRegister.addListener(new ClickListener() {
             public void clicked (InputEvent event, float x, float y) {
-            	if (!connected && myXMPPHandler.connect("localhost", 5222)){
-        			if (myXMPPHandler.login(txtUsername.getText(), txtPassword.getText())){
-        				System.out.println("Connect & Anmeldung erfolgreich!");
-        				connected = true;
-        				myGame.showMainMenu();
-        			} else {
-        				System.out.println("Anmeldung fehlgeschlagen!");
-        			}
-        		} else {
-        			System.out.println("Connect fehlgeschlagen!");
-        		}
+            	myGame.showMainMenu();
             }
         });
-    }
-    
-	public void loadScene(String scene) {
+	}
+
+	private void loadScene(String scene) {
 		mySceneLoader.loadScene(scene);
 	}
+
 }

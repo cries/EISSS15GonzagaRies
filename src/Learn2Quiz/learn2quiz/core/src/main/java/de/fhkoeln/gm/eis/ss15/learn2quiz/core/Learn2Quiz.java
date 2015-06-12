@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.GL30;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
@@ -12,6 +13,8 @@ import com.uwsoft.editor.renderer.SceneLoader;
 import com.uwsoft.editor.renderer.resources.ResourceManager;
 
 import de.fhkoeln.gm.eis.ss15.learn2quiz.core.screens.LoginScreen;
+import de.fhkoeln.gm.eis.ss15.learn2quiz.core.screens.MainMenuScreen;
+import de.fhkoeln.gm.eis.ss15.learn2quiz.core.screens.RegisterScreen;
 import de.fhkoeln.gm.eis.ss15.learn2quiz.core.screens.WelcomeScreen;
 import de.fhkoeln.gm.eis.ss15.learn2quiz.core.stages.LoginStage;
 import de.fhkoeln.gm.eis.ss15.learn2quiz.core.stages.WelcomeStage;
@@ -27,12 +30,13 @@ public class Learn2Quiz extends Game {
 	
 	public WelcomeScreen myWelcomeScreen;
 	public LoginScreen myLoginScreen;
+	public RegisterScreen myRegisterScreen;
+	public MainMenuScreen myMainMenuScreen;
 	
 	public InputMultiplexer myInputMultiplexer;
 	public SceneLoader mySceneLoader;
 	
-	private WelcomeStage myGameStage;
-	private LoginStage myMenuStage;
+	public Skin mySkin;
 	
 	@Override
 	public void create () {
@@ -41,6 +45,7 @@ public class Learn2Quiz extends Game {
 		myInputMultiplexer = new InputMultiplexer();
 		mySceneLoader = new SceneLoader(myResourceHandler);
 		myResourceHandler.initAllResources();
+		mySkin = new Skin( Gdx.files.internal( "uiskin.json" ));
 		
 		myWelcomeScreen = new WelcomeScreen(this);
 		//myLoginScreen = new LoginScreen(this);
@@ -57,12 +62,6 @@ public class Learn2Quiz extends Game {
 		
 		Gdx.gl.glClearColor(0.4f, 0.4f, 0.4f, 1);
 		Gdx.gl.glClear(GL30.GL_COLOR_BUFFER_BIT);
-		
-		//myGameStage.act();
-		//myGameStage.draw();
-		
-		//myMenuStage.act();
-		//myMenuStage.draw();
 		super.render();
 	}
 
@@ -84,5 +83,15 @@ public class Learn2Quiz extends Game {
 	public void showLogin() {
 		myLoginScreen = new LoginScreen(this);
 		setScreen(myLoginScreen);
+	}
+	
+	public void showRegister() {
+		myRegisterScreen = new RegisterScreen(this);
+		setScreen(myRegisterScreen);
+	}
+	
+	public void showMainMenu() {
+		myMainMenuScreen = new MainMenuScreen(this);
+		setScreen(myMainMenuScreen);
 	}
 }
