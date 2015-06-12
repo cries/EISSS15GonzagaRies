@@ -14,21 +14,21 @@ import de.fhkoeln.gm.eis.ss15.learn2quiz.core.xmpp.XMPPHandler;
 
 public class WelcomeScreen implements Screen {
 	
-	private WelcomeStage myGameStage;
+	private WelcomeStage myWelcomeStage;
 	
 	public WelcomeScreen(Learn2Quiz myGame) {
 
-		myGameStage = new WelcomeStage(myGame);
+		myWelcomeStage = new WelcomeStage(myGame);
 		
-		myGame.myInputMultiplexer.addProcessor(myGameStage);
+		myGame.myInputMultiplexer.addProcessor(myWelcomeStage);
 		Gdx.input.setInputProcessor(myGame.myInputMultiplexer);
 	}
 
 	@Override
 	public void render(float delta) {
 		//Gdx.gl.glClear(GL30.GL_COLOR_BUFFER_BIT);
-		myGameStage.act(delta);
-		myGameStage.draw();
+		myWelcomeStage.act(delta);
+		myWelcomeStage.draw();
 		
 	}
 
@@ -46,7 +46,7 @@ public class WelcomeScreen implements Screen {
 
 	@Override
 	public void hide() {
-		myGameStage.dispose();
+		myWelcomeStage.dispose();
 		
 	}
 
@@ -64,7 +64,7 @@ public class WelcomeScreen implements Screen {
 
 	@Override
 	public void dispose() {
-		myGameStage.dispose();
+		myWelcomeStage.dispose();
 		
 	}
 
