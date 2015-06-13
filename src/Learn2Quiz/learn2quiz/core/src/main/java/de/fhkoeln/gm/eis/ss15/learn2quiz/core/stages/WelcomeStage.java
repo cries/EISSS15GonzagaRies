@@ -25,7 +25,7 @@ public class WelcomeStage extends Stage {
 		myXMPPHandler = myGame.myXMPPHandler;
 		myResourceMgr = myGame.myResourceHandler;
 		mySceneLoader = myGame.mySceneLoader;
-		loadScene("MainScene");
+		loadScene("WelcomeScene");
 		addActor(mySceneLoader.getRoot());
 		
 		// Creating restart button, and adding a click listener to it

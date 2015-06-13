@@ -27,7 +27,7 @@ public class RegisterStage extends Stage {
 		myXMPPHandler = myGame.myXMPPHandler;
 		myResourceMgr = myGame.myResourceHandler;
 		mySceneLoader = myGame.mySceneLoader;
-		loadScene("RegisterScene");
+		loadScene("RegisterScreen");
 		addActor(mySceneLoader.getRoot());
 		
 		txtUsername = new TextField("", game.mySkin);
@@ -66,6 +66,13 @@ public class RegisterStage extends Stage {
         btnRegister.addListener(new ClickListener() {
             public void clicked (InputEvent event, float x, float y) {
             	myGame.showMainMenu();
+            }
+        });
+        
+        SimpleButtonScript btnBack = SimpleButtonScript.selfInit(mySceneLoader.getRoot().getCompositeById("btnBack"));
+        btnBack.addListener(new ClickListener() {
+            public void clicked (InputEvent event, float x, float y) {
+            	myGame.showWelcome();
             }
         });
 	}

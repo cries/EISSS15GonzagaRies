@@ -28,7 +28,7 @@ public class LoginStage extends Stage {
 		myXMPPHandler = myGame.myXMPPHandler;
 		myResourceMgr = myGame.myResourceHandler;
 		mySceneLoader = myGame.mySceneLoader;
-		loadScene("LoginScene");
+		loadScene("LoginScreen");
 		addActor(mySceneLoader.getRoot());
 		
 		txtUsername = new TextField("", game.mySkin);
@@ -61,6 +61,13 @@ public class LoginStage extends Stage {
         		} else {
         			System.out.println("Connect fehlgeschlagen!");
         		}
+            }
+        });
+        
+        SimpleButtonScript btnBack = SimpleButtonScript.selfInit(mySceneLoader.getRoot().getCompositeById("btnBack"));
+        btnBack.addListener(new ClickListener() {
+            public void clicked (InputEvent event, float x, float y) {
+            	myGame.showWelcome();
             }
         });
     }

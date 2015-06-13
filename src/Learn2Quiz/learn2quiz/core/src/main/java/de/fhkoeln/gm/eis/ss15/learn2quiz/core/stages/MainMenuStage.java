@@ -1,5 +1,6 @@
 package de.fhkoeln.gm.eis.ss15.learn2quiz.core.stages;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.TextField;
@@ -26,43 +27,50 @@ public class MainMenuStage extends Stage {
 		myXMPPHandler = myGame.myXMPPHandler;
 		myResourceMgr = myGame.myResourceHandler;
 		mySceneLoader = myGame.mySceneLoader;
-		//loadScene("MainMenu");
-		//addActor(mySceneLoader.getRoot());
+		loadScene("MainMenuScreen");
+		addActor(mySceneLoader.getRoot());
 		
-//		SimpleButtonScript btnGruppen = SimpleButtonScript.selfInit(mySceneLoader.getRoot().getCompositeById("btnGruppen"));
-//		btnGruppen.addListener(new ClickListener() {
-//            public void clicked (InputEvent event, float x, float y) {
-//            	//myGame.showGruppen();
-//            }
-//        });
-//        
-//        SimpleButtonScript btnSpielen = SimpleButtonScript.selfInit(mySceneLoader.getRoot().getCompositeById("btnSpielen"));
-//        btnSpielen.addListener(new ClickListener() {
-//            public void clicked (InputEvent event, float x, float y) {
-//            	//myGame.startGame();
-//            }
-//        });
-//        
-//        SimpleButtonScript btnEinladungen = SimpleButtonScript.selfInit(mySceneLoader.getRoot().getCompositeById("btnEinladungen"));
-//        btnEinladungen.addListener(new ClickListener() {
+		SimpleButtonScript btnGruppen = SimpleButtonScript.selfInit(mySceneLoader.getRoot().getCompositeById("btnGruppen"));
+		btnGruppen.addListener(new ClickListener() {
+            public void clicked (InputEvent event, float x, float y) {
+            	myGame.showGroups();
+            }
+        });
+        
+        SimpleButtonScript btnSpielen = SimpleButtonScript.selfInit(mySceneLoader.getRoot().getCompositeById("btnSpielen"));
+        btnSpielen.addListener(new ClickListener() {
+            public void clicked (InputEvent event, float x, float y) {
+            	//myGame.startGame();
+            }
+        });
+        
+        SimpleButtonScript btnEinladungen = SimpleButtonScript.selfInit(mySceneLoader.getRoot().getCompositeById("btnEinladungen"));
+        btnEinladungen.addListener(new ClickListener() {
+            public void clicked (InputEvent event, float x, float y) {
+            	//myGame.showEinladungen();
+            }
+        });
+        
+        SimpleButtonScript btnHome = SimpleButtonScript.selfInit(mySceneLoader.getRoot().getCompositeById("btnBreadcrumbHome"));
+        btnHome.addListener(new ClickListener() {
+            public void clicked (InputEvent event, float x, float y) {
+            	myGame.showMainMenu();
+            }
+        });
+        
+//        SimpleButtonScript btnGroup = SimpleButtonScript.selfInit(mySceneLoader.getRoot().getCompositeById("btnBreadcrumb2"));
+//        btnGroup.addListener(new ClickListener() {
 //            public void clicked (InputEvent event, float x, float y) {
 //            	//myGame.showEinladungen();
 //            }
 //        });
-//        
-//        SimpleButtonScript btnHome = SimpleButtonScript.selfInit(mySceneLoader.getRoot().getCompositeById("btnBreadcrumbHome"));
-//        btnHome.addListener(new ClickListener() {
-//            public void clicked (InputEvent event, float x, float y) {
-//            	//myGame.showEinladungen();
-//            }
-//        });
-//        
-//        SimpleButtonScript btnSchliessen = SimpleButtonScript.selfInit(mySceneLoader.getRoot().getCompositeById("btnClose"));
-//        btnSchliessen.addListener(new ClickListener() {
-//            public void clicked (InputEvent event, float x, float y) {
-//            	myGame.dispose();
-//            }
-//        });
+        
+        SimpleButtonScript btnSchliessen = SimpleButtonScript.selfInit(mySceneLoader.getRoot().getCompositeById("btnSchliessen"));
+        btnSchliessen.addListener(new ClickListener() {
+            public void clicked (InputEvent event, float x, float y) {
+            	Gdx.app.exit();
+            }
+        });
 	}
 
 	private void loadScene(String scene) {

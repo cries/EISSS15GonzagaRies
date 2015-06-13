@@ -12,6 +12,7 @@ import com.badlogic.gdx.InputMultiplexer;
 import com.uwsoft.editor.renderer.SceneLoader;
 import com.uwsoft.editor.renderer.resources.ResourceManager;
 
+import de.fhkoeln.gm.eis.ss15.learn2quiz.core.screens.GroupsScreen;
 import de.fhkoeln.gm.eis.ss15.learn2quiz.core.screens.LoginScreen;
 import de.fhkoeln.gm.eis.ss15.learn2quiz.core.screens.MainMenuScreen;
 import de.fhkoeln.gm.eis.ss15.learn2quiz.core.screens.RegisterScreen;
@@ -32,6 +33,7 @@ public class Learn2Quiz extends Game {
 	public LoginScreen myLoginScreen;
 	public RegisterScreen myRegisterScreen;
 	public MainMenuScreen myMainMenuScreen;
+	public GroupsScreen myGroupsScreen;
 	
 	public InputMultiplexer myInputMultiplexer;
 	public SceneLoader mySceneLoader;
@@ -93,5 +95,15 @@ public class Learn2Quiz extends Game {
 	public void showMainMenu() {
 		myMainMenuScreen = new MainMenuScreen(this);
 		setScreen(myMainMenuScreen);
+	}
+	
+	public void showWelcome() {
+		myWelcomeScreen = new WelcomeScreen(this);
+		setScreen(myWelcomeScreen);
+	}
+	
+	public void showGroups() {
+		myGroupsScreen = new GroupsScreen(this);
+		setScreen(myGroupsScreen);
 	}
 }
