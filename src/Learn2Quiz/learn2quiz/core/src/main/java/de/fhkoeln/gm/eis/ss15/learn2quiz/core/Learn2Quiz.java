@@ -12,7 +12,7 @@ import com.badlogic.gdx.InputMultiplexer;
 import com.uwsoft.editor.renderer.SceneLoader;
 import com.uwsoft.editor.renderer.resources.ResourceManager;
 
-import de.fhkoeln.gm.eis.ss15.learn2quiz.core.screens.CardsScreen;
+
 import de.fhkoeln.gm.eis.ss15.learn2quiz.core.screens.CardsetsScreen;
 import de.fhkoeln.gm.eis.ss15.learn2quiz.core.screens.DiscussionScreen;
 import de.fhkoeln.gm.eis.ss15.learn2quiz.core.screens.GameCardsetScreen;
@@ -44,7 +44,6 @@ public class Learn2Quiz extends Game {
 	public GameGroupScreen myGameGroupScreen;
 	public GameCardsetScreen myGameCardsetScreen;
 	public DiscussionScreen myDiscussionScreen;
-	public CardsScreen myCardScreen;
 	public CardsetsScreen myCardssetScreen;
 	
 	public InputMultiplexer myInputMultiplexer;
@@ -138,10 +137,7 @@ public class Learn2Quiz extends Game {
 		setScreen(myDiscussionScreen);
 	}
 	
-	public void showCards(){
-		myCardScreen = new CardsScreen(this);
-		setScreen(myCardScreen);
-	}
+
 	
 	public void showCardsset(){
 		myCardssetScreen = new CardsetsScreen(this);
