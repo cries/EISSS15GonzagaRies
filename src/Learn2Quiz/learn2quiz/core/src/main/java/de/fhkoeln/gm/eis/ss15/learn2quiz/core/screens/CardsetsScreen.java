@@ -5,12 +5,12 @@ import com.badlogic.gdx.Screen;
 import de.fhkoeln.gm.eis.ss15.learn2quiz.core.Learn2Quiz;
 import de.fhkoeln.gm.eis.ss15.learn2quiz.core.stages.CardsStage;
 
-public class CardssetScreen implements Screen {
+public class CardsetsScreen implements Screen {
 
 	private CardsStage myCardssetStage;
 	private Learn2Quiz myGame;
 	
-	public CardssetScreen(Learn2Quiz myGame) {
+	public CardsetsScreen(Learn2Quiz myGame) {
 		myCardssetStage = new CardsStage(myGame);
 		myGame.myInputMultiplexer.addProcessor(myCardssetStage);
 	}

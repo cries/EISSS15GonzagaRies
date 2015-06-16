@@ -7,7 +7,7 @@ import com.uwsoft.editor.renderer.resources.ResourceManager;
 import de.fhkoeln.gm.eis.ss15.learn2quiz.core.Learn2Quiz;
 import de.fhkoeln.gm.eis.ss15.learn2quiz.core.xmpp.XMPPHandler;
 
-public class CardssetStage extends Stage {
+public class CardsetsStage extends Stage {
 	
 	
 	public ResourceManager myResourceMgr;
@@ -16,7 +16,7 @@ public class CardssetStage extends Stage {
 	private Learn2Quiz myGame;
 	
 	
-	public CardssetStage(Learn2Quiz game) {
+	public CardsetsStage(Learn2Quiz game) {
 		myGame = game;
 		//myRESTHandler = myGame.RESTHandler;
 		myXMPPHandler = myGame.myXMPPHandler;

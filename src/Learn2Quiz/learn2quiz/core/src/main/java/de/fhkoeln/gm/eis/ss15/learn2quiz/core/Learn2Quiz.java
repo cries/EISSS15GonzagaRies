@@ -13,7 +13,7 @@ import com.uwsoft.editor.renderer.SceneLoader;
 import com.uwsoft.editor.renderer.resources.ResourceManager;
 
 import de.fhkoeln.gm.eis.ss15.learn2quiz.core.screens.CardsScreen;
-import de.fhkoeln.gm.eis.ss15.learn2quiz.core.screens.CardssetScreen;
+import de.fhkoeln.gm.eis.ss15.learn2quiz.core.screens.CardsetsScreen;
 import de.fhkoeln.gm.eis.ss15.learn2quiz.core.screens.DiscussionScreen;
 import de.fhkoeln.gm.eis.ss15.learn2quiz.core.screens.GameCardsetScreen;
 import de.fhkoeln.gm.eis.ss15.learn2quiz.core.screens.GameGroupScreen;
@@ -45,7 +45,7 @@ public class Learn2Quiz extends Game {
 	public GameCardsetScreen myGameCardsetScreen;
 	public DiscussionScreen myDiscussionScreen;
 	public CardsScreen myCardScreen;
-	public CardssetScreen myCardssetScreen;
+	public CardsetsScreen myCardssetScreen;
 	
 	public InputMultiplexer myInputMultiplexer;
 	public SceneLoader mySceneLoader;
@@ -144,7 +144,7 @@ public class Learn2Quiz extends Game {
 	}
 	
 	public void showCardsset(){
-		myCardssetScreen = new CardssetScreen(this);
+		myCardssetScreen = new CardsetsScreen(this);
 		setScreen(myCardssetScreen);
 	}
 }
