@@ -49,9 +49,28 @@ public class CardsetsStage extends Stage {
             	//myGame.showMainMenu();
             }
         });
+        
+        SimpleButtonScript btnAdd = SimpleButtonScript.selfInit(mySceneLoader.getRoot().getCompositeById("btnAdd"));
+        btnAdd.addListener(new ClickListener() {
+            public void clicked (InputEvent event, float x, float y) {
+            	//myGame.showMainMenu();
+            }
+        });
 	
-	
+        SimpleButtonScript btnBreadcrumbHome = SimpleButtonScript.selfInit(mySceneLoader.getRoot().getCompositeById("btnBreadcrumbHome"));
+        btnBreadcrumbHome.addListener(new ClickListener() {
+            public void clicked (InputEvent event, float x, float y) {
+            	//myGame.showMainMenu();
+            }
+        });
 
+        SimpleButtonScript btnBreadcrumbGroups = SimpleButtonScript.selfInit(mySceneLoader.getRoot().getCompositeById("btnBreadcrumbGroups"));
+        btnBreadcrumbGroups.addListener(new ClickListener() {
+            public void clicked (InputEvent event, float x, float y) {
+            	//myGame.showMainMenu();
+            }
+        });
+        
 }
 
 
