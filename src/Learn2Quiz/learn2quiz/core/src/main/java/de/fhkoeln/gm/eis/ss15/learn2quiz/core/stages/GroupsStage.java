@@ -39,6 +39,27 @@ public class GroupsStage extends Stage {
             	myGame.showMainMenu();
             }
         });
+        
+        SimpleButtonScript btnEdit = SimpleButtonScript.selfInit(mySceneLoader.getRoot().getCompositeById("btnEdit"));
+        btnBack.addListener(new ClickListener() {
+            public void clicked (InputEvent event, float x, float y) {
+            	//myGame.showMainMenu();
+            }
+        });
+        
+        SimpleButtonScript btnDelete = SimpleButtonScript.selfInit(mySceneLoader.getRoot().getCompositeById("btnDelete"));
+        btnBack.addListener(new ClickListener() {
+            public void clicked (InputEvent event, float x, float y) {
+            	//myGame.showMainMenu();
+            }
+        });
+        
+        SimpleButtonScript btnInvite = SimpleButtonScript.selfInit(mySceneLoader.getRoot().getCompositeById("btnInvite"));
+        btnBack.addListener(new ClickListener() {
+            public void clicked (InputEvent event, float x, float y) {
+            	//myGame.showMainMenu();
+            }
+        });
 	}
 
 	private void loadScene(String scene) {
