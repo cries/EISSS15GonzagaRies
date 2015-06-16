@@ -25,7 +25,7 @@ public class CardsetsStage extends Stage {
 		myXMPPHandler = myGame.myXMPPHandler;
 		myResourceMgr = myGame.myResourceHandler;
 		mySceneLoader = myGame.mySceneLoader;
-		loadScene("GroupsScreen");
+		loadScene("CardsetsScreen");
 		addActor(mySceneLoader.getRoot());
 	
 	
