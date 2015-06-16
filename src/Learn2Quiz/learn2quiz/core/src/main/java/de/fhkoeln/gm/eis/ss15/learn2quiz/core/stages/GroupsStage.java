@@ -68,6 +68,13 @@ public class GroupsStage extends Stage {
             }
         });
         
+        SimpleButtonScript btnAdd = SimpleButtonScript.selfInit(mySceneLoader.getRoot().getCompositeById("btnAdd"));
+        btnAdd.addListener(new ClickListener() {
+            public void clicked (InputEvent event, float x, float y) {
+            	//myGame.showMainMenu();
+            }
+        });
+        
         
 	}
 
