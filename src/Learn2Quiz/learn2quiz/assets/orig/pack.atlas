@@ -6,175 +6,238 @@ filter: Linear,Linear
 repeat: none
 BackPfeil
   rotate: false
-  xy: 878, 148
+  xy: 1789, 261
   size: 105, 63
   orig: 105, 63
   offset: 0, 0
   index: -1
 BackPfeilPressed
   rotate: false
-  xy: 1124, 357
+  xy: 1789, 196
   size: 105, 63
   orig: 105, 63
   offset: 0, 0
   index: -1
+BearbeitenButton
+  rotate: false
+  xy: 1949, 452
+  size: 41, 41
+  orig: 41, 41
+  offset: 0, 0
+  index: -1
+BearbeitenButtonPressed
+  rotate: false
+  xy: 1992, 452
+  size: 41, 41
+  orig: 41, 41
+  offset: 0, 0
+  index: -1
+EinladenButton
+  rotate: false
+  xy: 635, 2
+  size: 42, 42
+  orig: 42, 42
+  offset: 0, 0
+  index: -1
+EinladenButtonPressed
+  rotate: false
+  xy: 2003, 282
+  size: 42, 42
+  orig: 42, 42
+  offset: 0, 0
+  index: -1
+Gluehbrine
+  rotate: false
+  xy: 1159, 75
+  size: 208, 124
+  orig: 208, 124
+  offset: 0, 0
+  index: -1
+GluehbrinePressed
+  rotate: false
+  xy: 1369, 75
+  size: 208, 124
+  orig: 208, 124
+  offset: 0, 0
+  index: -1
 OkButton
   rotate: false
-  xy: 1231, 357
+  xy: 1896, 261
   size: 105, 63
   orig: 105, 63
   offset: 0, 0
   index: -1
 OkButtonPressed
   rotate: false
-  xy: 985, 148
+  xy: 1789, 131
   size: 105, 63
   orig: 105, 63
   offset: 0, 0
   index: -1
 PlusButton
   rotate: false
-  xy: 878, 83
+  xy: 1896, 196
   size: 105, 63
   orig: 105, 63
   offset: 0, 0
   index: -1
 PlusButtonPressed
   rotate: false
-  xy: 985, 83
+  xy: 1896, 131
   size: 105, 63
   orig: 105, 63
   offset: 0, 0
   index: -1
 SchliessenButton
   rotate: false
-  xy: 1371, 443
+  xy: 1789, 66
   size: 105, 63
   orig: 105, 63
+  offset: 0, 0
+  index: -1
+SchliessenButtonKlein
+  rotate: false
+  xy: 2003, 238
+  size: 42, 42
+  orig: 42, 42
+  offset: 0, 0
+  index: -1
+SchliessenButtonKleinPressed
+  rotate: false
+  xy: 2003, 194
+  size: 42, 42
+  orig: 42, 42
   offset: 0, 0
   index: -1
 SchliessenButtonPressed
   rotate: false
-  xy: 1478, 443
+  xy: 1896, 66
   size: 105, 63
   orig: 105, 63
   offset: 0, 0
   index: -1
-breadcrumb1normal
+SuchButton
   rotate: false
-  xy: 2, 46
-  size: 209, 42
-  orig: 209, 42
+  xy: 1861, 452
+  size: 42, 41
+  orig: 42, 41
   offset: 0, 0
   index: -1
-breadcrumb1pressed
+SuchButtonPressed
+  rotate: false
+  xy: 1905, 452
+  size: 42, 41
+  orig: 42, 41
+  offset: 0, 0
+  index: -1
+breadcrumb1normal
   rotate: false
   xy: 2, 2
   size: 209, 42
   orig: 209, 42
   offset: 0, 0
   index: -1
+breadcrumb1pressed
+  rotate: false
+  xy: 213, 2
+  size: 209, 42
+  orig: 209, 42
+  offset: 0, 0
+  index: -1
 breadcrumb2normal
   rotate: false
-  xy: 949, 465
+  xy: 1650, 452
   size: 209, 41
   orig: 209, 41
   offset: 0, 0
   index: -1
 breadcrumb2pressed
   rotate: false
-  xy: 213, 47
-  size: 209, 41
-  orig: 209, 41
-  offset: 0, 0
-  index: -1
-breadcrumbGruppennormal
-  rotate: false
-  xy: 1160, 465
-  size: 209, 41
-  orig: 209, 41
-  offset: 0, 0
-  index: -1
-breadcrumbGruppenpressed
-  rotate: false
-  xy: 1124, 422
+  xy: 424, 3
   size: 209, 41
   orig: 209, 41
   offset: 0, 0
   index: -1
 einladungennormal
   rotate: false
-  xy: 458, 214
+  xy: 1159, 201
   size: 208, 124
   orig: 208, 124
   offset: 0, 0
   index: -1
 einladungenpressed
   rotate: false
-  xy: 668, 214
+  xy: 1369, 201
   size: 208, 124
   orig: 208, 124
   offset: 0, 0
   index: -1
 einloggennormal
   rotate: false
-  xy: 2, 340
+  xy: 703, 327
   size: 454, 123
   orig: 454, 123
   offset: 0, 0
   index: -1
 einloggenpressed
   rotate: false
-  xy: 2, 215
+  xy: 703, 202
   size: 454, 123
   orig: 454, 123
   offset: 0, 0
   index: -1
 gruppennormal
   rotate: false
-  xy: 458, 88
+  xy: 1615, 326
   size: 208, 124
   orig: 208, 124
   offset: 0, 0
   index: -1
 gruppenpressed
   rotate: false
-  xy: 668, 88
+  xy: 1579, 200
   size: 208, 124
   orig: 208, 124
   offset: 0, 0
   index: -1
 listItem
   rotate: false
-  xy: 2, 465
+  xy: 703, 452
   size: 945, 41
   orig: 945, 41
   offset: 0, 0
   index: -1
+placeholder
+  rotate: false
+  xy: 2, 46
+  size: 699, 447
+  orig: 699, 447
+  offset: 0, 0
+  index: -1
 registrierennormal
   rotate: false
-  xy: 458, 340
+  xy: 1159, 327
   size: 454, 123
   orig: 454, 123
   offset: 0, 0
   index: -1
 registrierenpressed
   rotate: false
-  xy: 2, 90
+  xy: 703, 77
   size: 454, 123
   orig: 454, 123
   offset: 0, 0
   index: -1
 spielstartennormal
   rotate: false
-  xy: 914, 339
+  xy: 1579, 74
   size: 208, 124
   orig: 208, 124
   offset: 0, 0
   index: -1
 spielstartenpressed
   rotate: false
-  xy: 878, 213
+  xy: 1825, 326
   size: 208, 124
   orig: 208, 124
   offset: 0, 0
