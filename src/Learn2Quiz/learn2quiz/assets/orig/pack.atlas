@@ -1,243 +1,292 @@
 
 pack.png
-size: 2048,512
+size: 2048,1024
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
 BackPfeil
   rotate: false
-  xy: 1789, 261
+  xy: 1861, 952
   size: 105, 63
   orig: 105, 63
   offset: 0, 0
   index: -1
 BackPfeilPressed
   rotate: false
-  xy: 1789, 196
+  xy: 213, 2
   size: 105, 63
   orig: 105, 63
   offset: 0, 0
   index: -1
 BearbeitenButton
   rotate: false
-  xy: 1949, 452
+  xy: 668, 525
   size: 41, 41
   orig: 41, 41
   offset: 0, 0
   index: -1
 BearbeitenButtonPressed
   rotate: false
-  xy: 1992, 452
+  xy: 668, 482
   size: 41, 41
   orig: 41, 41
   offset: 0, 0
   index: -1
 EinladenButton
   rotate: false
-  xy: 635, 2
+  xy: 1968, 973
   size: 42, 42
   orig: 42, 42
   offset: 0, 0
   index: -1
 EinladenButtonPressed
   rotate: false
-  xy: 2003, 282
+  xy: 1790, 930
   size: 42, 42
   orig: 42, 42
   offset: 0, 0
   index: -1
 Gluehbrine
   rotate: false
-  xy: 1159, 75
+  xy: 2, 192
   size: 208, 124
   orig: 208, 124
   offset: 0, 0
   index: -1
 GluehbrinePressed
   rotate: false
-  xy: 1369, 75
+  xy: 703, 598
   size: 208, 124
   orig: 208, 124
   offset: 0, 0
   index: -1
 OkButton
   rotate: false
-  xy: 1896, 261
+  xy: 320, 2
   size: 105, 63
   orig: 105, 63
   offset: 0, 0
   index: -1
 OkButtonPressed
   rotate: false
-  xy: 1789, 131
+  xy: 458, 291
   size: 105, 63
   orig: 105, 63
   offset: 0, 0
   index: -1
 PlusButton
   rotate: false
-  xy: 1896, 196
+  xy: 565, 291
   size: 105, 63
   orig: 105, 63
   offset: 0, 0
   index: -1
 PlusButtonPressed
   rotate: false
-  xy: 1896, 131
+  xy: 1159, 695
   size: 105, 63
   orig: 105, 63
   offset: 0, 0
   index: -1
 SchliessenButton
   rotate: false
-  xy: 1789, 66
+  xy: 1266, 695
   size: 105, 63
   orig: 105, 63
   offset: 0, 0
   index: -1
 SchliessenButtonKlein
   rotate: false
-  xy: 2003, 238
+  xy: 1480, 718
   size: 42, 42
   orig: 42, 42
   offset: 0, 0
   index: -1
 SchliessenButtonKleinPressed
   rotate: false
-  xy: 2003, 194
+  xy: 1524, 718
   size: 42, 42
   orig: 42, 42
   offset: 0, 0
   index: -1
 SchliessenButtonPressed
   rotate: false
-  xy: 1896, 66
+  xy: 1373, 697
   size: 105, 63
   orig: 105, 63
   offset: 0, 0
   index: -1
 SuchButton
   rotate: false
-  xy: 1861, 452
+  xy: 1790, 887
   size: 42, 41
   orig: 42, 41
   offset: 0, 0
   index: -1
 SuchButtonPressed
   rotate: false
-  xy: 1905, 452
+  xy: 1968, 930
   size: 42, 41
   orig: 42, 41
   offset: 0, 0
   index: -1
 breadcrumb1normal
   rotate: false
-  xy: 2, 2
+  xy: 1159, 804
   size: 209, 42
   orig: 209, 42
   offset: 0, 0
   index: -1
 breadcrumb1pressed
   rotate: false
-  xy: 213, 2
+  xy: 1159, 760
   size: 209, 42
   orig: 209, 42
   offset: 0, 0
   index: -1
 breadcrumb2normal
   rotate: false
-  xy: 1650, 452
+  xy: 1650, 974
   size: 209, 41
   orig: 209, 41
   offset: 0, 0
   index: -1
 breadcrumb2pressed
   rotate: false
-  xy: 424, 3
+  xy: 1579, 931
+  size: 209, 41
+  orig: 209, 41
+  offset: 0, 0
+  index: -1
+breadcrumbGruppennormal
+  rotate: false
+  xy: 1579, 888
+  size: 209, 41
+  orig: 209, 41
+  offset: 0, 0
+  index: -1
+breadcrumbGruppenpressed
+  rotate: false
+  xy: 458, 399
+  size: 209, 41
+  orig: 209, 41
+  offset: 0, 0
+  index: -1
+breadcrumbKartensetsnormal
+  rotate: false
+  xy: 458, 356
+  size: 209, 41
+  orig: 209, 41
+  offset: 0, 0
+  index: -1
+breadcrumbKartensetspressed
+  rotate: false
+  xy: 2, 23
+  size: 209, 41
+  orig: 209, 41
+  offset: 0, 0
+  index: -1
+breadcrumbSetnormal
+  rotate: false
+  xy: 1370, 805
+  size: 209, 41
+  orig: 209, 41
+  offset: 0, 0
+  index: -1
+breadcrumbSetpressed
+  rotate: false
+  xy: 1370, 762
   size: 209, 41
   orig: 209, 41
   offset: 0, 0
   index: -1
 einladungennormal
   rotate: false
-  xy: 1159, 201
+  xy: 458, 442
   size: 208, 124
   orig: 208, 124
   offset: 0, 0
   index: -1
 einladungenpressed
   rotate: false
-  xy: 1369, 201
+  xy: 1159, 848
   size: 208, 124
   orig: 208, 124
   offset: 0, 0
   index: -1
 einloggennormal
   rotate: false
-  xy: 703, 327
+  xy: 2, 443
   size: 454, 123
   orig: 454, 123
   offset: 0, 0
   index: -1
 einloggenpressed
   rotate: false
-  xy: 703, 202
+  xy: 703, 849
   size: 454, 123
   orig: 454, 123
   offset: 0, 0
   index: -1
 gruppennormal
   rotate: false
-  xy: 1615, 326
+  xy: 1369, 848
   size: 208, 124
   orig: 208, 124
   offset: 0, 0
   index: -1
 gruppenpressed
   rotate: false
-  xy: 1579, 200
+  xy: 2, 66
   size: 208, 124
   orig: 208, 124
   offset: 0, 0
   index: -1
 listItem
   rotate: false
-  xy: 703, 452
+  xy: 703, 974
   size: 945, 41
   orig: 945, 41
   offset: 0, 0
   index: -1
 placeholder
   rotate: false
-  xy: 2, 46
+  xy: 2, 568
   size: 699, 447
   orig: 699, 447
   offset: 0, 0
   index: -1
+placeholderCard
+  rotate: false
+  xy: 212, 67
+  size: 208, 123
+  orig: 208, 123
+  offset: 0, 0
+  index: -1
 registrierennormal
   rotate: false
-  xy: 1159, 327
+  xy: 2, 318
   size: 454, 123
   orig: 454, 123
   offset: 0, 0
   index: -1
 registrierenpressed
   rotate: false
-  xy: 703, 77
+  xy: 703, 724
   size: 454, 123
   orig: 454, 123
   offset: 0, 0
   index: -1
 spielstartennormal
   rotate: false
-  xy: 1579, 74
+  xy: 212, 192
   size: 208, 124
   orig: 208, 124
   offset: 0, 0
   index: -1
 spielstartenpressed
   rotate: false
-  xy: 1825, 326
+  xy: 913, 598
   size: 208, 124
   orig: 208, 124
   offset: 0, 0

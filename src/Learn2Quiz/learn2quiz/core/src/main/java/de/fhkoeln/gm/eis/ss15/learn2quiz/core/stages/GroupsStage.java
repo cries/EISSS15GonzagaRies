@@ -33,6 +33,13 @@ public class GroupsStage extends Stage {
             }
         });
 		
+		SimpleButtonScript btnBreadcrumbGroups = SimpleButtonScript.selfInit(mySceneLoader.getRoot().getCompositeById("btnBreadcrumbGroups"));
+		btnBreadcrumbGroups.addListener(new ClickListener() {
+            public void clicked (InputEvent event, float x, float y) {
+            	//myGame.showMainMenu();
+            }
+        });
+		
 		SimpleButtonScript btnBack = SimpleButtonScript.selfInit(mySceneLoader.getRoot().getCompositeById("btnBack"));
         btnBack.addListener(new ClickListener() {
             public void clicked (InputEvent event, float x, float y) {
@@ -60,6 +67,15 @@ public class GroupsStage extends Stage {
             	//myGame.showMainMenu();
             }
         });
+        
+        SimpleButtonScript btnAdd = SimpleButtonScript.selfInit(mySceneLoader.getRoot().getCompositeById("btnAdd"));
+        btnAdd.addListener(new ClickListener() {
+            public void clicked (InputEvent event, float x, float y) {
+            	//myGame.showMainMenu();
+            }
+        });
+        
+        
 	}
 
 	private void loadScene(String scene) {
