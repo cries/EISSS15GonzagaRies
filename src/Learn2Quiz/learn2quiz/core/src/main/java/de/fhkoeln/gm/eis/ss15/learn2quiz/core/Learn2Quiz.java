@@ -12,6 +12,12 @@ import com.badlogic.gdx.InputMultiplexer;
 import com.uwsoft.editor.renderer.SceneLoader;
 import com.uwsoft.editor.renderer.resources.ResourceManager;
 
+import de.fhkoeln.gm.eis.ss15.learn2quiz.core.screens.CardsScreen;
+import de.fhkoeln.gm.eis.ss15.learn2quiz.core.screens.CardssetScreen;
+import de.fhkoeln.gm.eis.ss15.learn2quiz.core.screens.DiscussionScreen;
+import de.fhkoeln.gm.eis.ss15.learn2quiz.core.screens.GameCardsetScreen;
+import de.fhkoeln.gm.eis.ss15.learn2quiz.core.screens.GameGroupScreen;
+import de.fhkoeln.gm.eis.ss15.learn2quiz.core.screens.GameScreen;
 import de.fhkoeln.gm.eis.ss15.learn2quiz.core.screens.GroupsScreen;
 import de.fhkoeln.gm.eis.ss15.learn2quiz.core.screens.LoginScreen;
 import de.fhkoeln.gm.eis.ss15.learn2quiz.core.screens.MainMenuScreen;
@@ -34,6 +40,12 @@ public class Learn2Quiz extends Game {
 	public RegisterScreen myRegisterScreen;
 	public MainMenuScreen myMainMenuScreen;
 	public GroupsScreen myGroupsScreen;
+	public GameScreen myGameScreen;
+	public GameGroupScreen myGameGroupScreen;
+	public GameCardsetScreen myGameCardsetScreen;
+	public DiscussionScreen myDiscussionScreen;
+	public CardsScreen myCardScreen;
+	public CardssetScreen myCardssetScreen;
 	
 	public InputMultiplexer myInputMultiplexer;
 	public SceneLoader mySceneLoader;
@@ -106,4 +118,35 @@ public class Learn2Quiz extends Game {
 		myGroupsScreen = new GroupsScreen(this);
 		setScreen(myGroupsScreen);
 	}
+	
+	public void showGame(){
+		myGameScreen = new GameScreen(this);
+		setScreen(myGameScreen);
+	}
+
+	public void showGameGroup(){
+		myGameGroupScreen = new GameGroupScreen(this);
+		setScreen(myGameGroupScreen);
+	}
+	
+	public void showGameCardset(){
+		myGameCardsetScreen = new GameCardsetScreen(this);
+		setScreen(myGameCardsetScreen);
+	}
+	public void showDiscussion (){
+		myDiscussionScreen = new DiscussionScreen(this);
+		setScreen(myDiscussionScreen);
+	}
+	
+	public void showCards(){
+		myCardScreen = new CardsScreen(this);
+		setScreen(myCardScreen);
+	}
+	
+	public void showCardsset(){
+		myCardssetScreen = new CardssetScreen(this);
+		setScreen(myCardssetScreen);
+	}
 }
+
+
