@@ -3,22 +3,22 @@ package de.fhkoeln.gm.eis.ss15.learn2quiz.core.screens;
 import com.badlogic.gdx.Screen;
 
 import de.fhkoeln.gm.eis.ss15.learn2quiz.core.Learn2Quiz;
-import de.fhkoeln.gm.eis.ss15.learn2quiz.core.stages.CardsStage;
+import de.fhkoeln.gm.eis.ss15.learn2quiz.core.stages.CardsetsStage;
 
 public class CardsetsScreen implements Screen {
 
-	private CardsStage myCardssetStage;
+	private CardsetsStage myCardsetsStage;
 	private Learn2Quiz myGame;
 	
 	public CardsetsScreen(Learn2Quiz myGame) {
-		myCardssetStage = new CardsStage(myGame);
-		myGame.myInputMultiplexer.addProcessor(myCardssetStage);
+		myCardsetsStage = new CardsetsStage(myGame);
+		myGame.myInputMultiplexer.addProcessor(myCardsetsStage);
 	}
 	
 	@Override
 	public void render(float delta) {
-		myCardssetStage.act(delta);
-		myCardssetStage.draw();
+		myCardsetsStage.act(delta);
+		myCardsetsStage.draw();
 		
 	}
 
@@ -36,7 +36,7 @@ public class CardsetsScreen implements Screen {
 
 	@Override
 	public void hide() {
-		myCardssetStage.dispose();
+		myCardsetsStage.dispose();
 		
 	}
 
@@ -54,7 +54,7 @@ public class CardsetsScreen implements Screen {
 
 	@Override
 	public void dispose() {
-		myCardssetStage.dispose();
+		myCardsetsStage.dispose();
 		
 	}
 

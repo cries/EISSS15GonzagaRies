@@ -3,15 +3,15 @@ package de.fhkoeln.gm.eis.ss15.learn2quiz.core.screens;
 import com.badlogic.gdx.Screen;
 
 import de.fhkoeln.gm.eis.ss15.learn2quiz.core.Learn2Quiz;
-import de.fhkoeln.gm.eis.ss15.learn2quiz.core.stages.CardsStage;
+import de.fhkoeln.gm.eis.ss15.learn2quiz.core.stages.GameStage;
 
 public class GameScreen implements Screen {
 
-	private CardsStage myGameStage;
+	private GameStage myGameStage;
 	private Learn2Quiz myGame;
 	
 	public GameScreen(Learn2Quiz myGame) {
-		myGameStage = new CardsStage(myGame);
+		myGameStage = new GameStage(myGame);
 		myGame.myInputMultiplexer.addProcessor(myGameStage);
 	}
 
