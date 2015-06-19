@@ -12,6 +12,7 @@ import com.uwsoft.editor.renderer.script.SimpleButtonScript;
 
 import de.fhkoeln.gm.eis.ss15.learn2quiz.core.Learn2Quiz;
 import de.fhkoeln.gm.eis.ss15.learn2quiz.core.rest.RESTHandler;
+import de.fhkoeln.gm.eis.ss15.learn2quiz.core.rest.entities.Tbluser;
 import de.fhkoeln.gm.eis.ss15.learn2quiz.core.xmpp.XMPPHandler;
 
 public class LoginStage extends Stage {
@@ -67,6 +68,8 @@ public class LoginStage extends Stage {
             	
             	if (myRESTHandler.getConnection()) {
         			System.out.println("REST Socket OK");
+        			Tbluser myUser = myRESTHandler.getUser("1");
+        			System.out.println("Name: " + myUser.getDtBenutzername() + " - Email: " + myUser.getDtEmail());
         		} else {
         			System.out.println("REST Socket FAILED");
         		}
