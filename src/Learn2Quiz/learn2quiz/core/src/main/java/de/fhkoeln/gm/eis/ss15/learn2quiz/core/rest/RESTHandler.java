@@ -2,6 +2,7 @@ package de.fhkoeln.gm.eis.ss15.learn2quiz.core.rest;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
@@ -63,7 +64,7 @@ public class RESTHandler {
 	
 		
 	public Tbluser getUser(String userId) {
-		Tbluser user = null;
+		Tbluser myObj = null;
 			try {
 				String uri = baseURI + "/user/" + userId;
 					URL url = new URL(uri);
@@ -73,13 +74,67 @@ public class RESTHandler {
 				 
 					JAXBContext jc = JAXBContext.newInstance(Tbluser.class);
 					InputStream xml = connection.getInputStream();
+					
+					// Get object from InputStream
 					if (connection.getResponseCode() == 200)  {
-						user = (Tbluser) jc.createUnmarshaller().unmarshal(xml);
+						myObj = (Tbluser) jc.createUnmarshaller().unmarshal(xml);
 					}
 					connection.disconnect();
 			} catch (Exception e) {
 				throw new RuntimeException(e);
 			}
-			return user;
+			return myObj;
+	}
+	
+	public int addUser(Tbluser myUser) {
+		int myStatusCode = -1;
+		try { 
+			String uri = baseURI + "/user";
+	        URL url = new URL(uri);
+	        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+	        connection.setDoOutput(true);
+	        connection.setInstanceFollowRedirects(false);
+	        connection.setRequestMethod("POST");
+	        connection.setRequestProperty("Content-Type", "application/xml");
+	        
+	        JAXBContext jc = JAXBContext.newInstance(Tbluser.class);
+	        OutputStream os = connection.getOutputStream();
+	        
+	        // Write object to OutputStream
+	        jc.createMarshaller().marshal(myUser, os);
+	        os.flush();
+
+	        myStatusCode = connection.getResponseCode();
+	        connection.disconnect();
+	    } catch(Exception e) {
+	        throw new RuntimeException(e);
+	    }
+		return myStatusCode;
+	}
+	
+	public int updateUser(Tbluser myUser) {
+		int myStatusCode = -1;
+		try {
+			String uri = baseURI + "/user";
+	        URL url = new URL(uri);
+	        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+	        connection.setDoOutput(true);
+	        connection.setInstanceFollowRedirects(false);
+	        connection.setRequestMethod("PUT");
+	        connection.setRequestProperty("Content-Type", "application/xml");
+	        
+	        JAXBContext jc = JAXBContext.newInstance(Tbluser.class);
+	        OutputStream os = connection.getOutputStream();
+	        
+	        // Write object to OutputStream
+	        jc.createMarshaller().marshal(myUser, os);
+	        os.flush();
+
+	        myStatusCode = connection.getResponseCode();
+	        connection.disconnect();
+	    } catch(Exception e) {
+	        throw new RuntimeException(e);
+	    }
+		return myStatusCode;
 	}
 }

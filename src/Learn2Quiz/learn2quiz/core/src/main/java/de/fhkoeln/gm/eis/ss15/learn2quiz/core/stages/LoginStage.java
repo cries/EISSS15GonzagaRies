@@ -68,8 +68,22 @@ public class LoginStage extends Stage {
             	
             	if (myRESTHandler.getConnection()) {
         			System.out.println("REST Socket OK");
-        			Tbluser myUser = myRESTHandler.getUser("1");
-        			System.out.println("Name: " + myUser.getDtBenutzername() + " - Email: " + myUser.getDtEmail());
+        			
+//        			// GET USER BY ID
+//        			Tbluser myUser = myRESTHandler.getUser("1");
+//        			System.out.println("Name: " + myUser.getDtBenutzername() + " - Email: " + myUser.getDtEmail());
+        			
+//					// ADD NEW USER        			
+//        			Tbluser myNewUser = new Tbluser();
+//        			myNewUser.setDtBenutzername("TestUser");
+//        			myNewUser.setDtEmail("user@email.com");
+//        			myNewUser.setDtPasswort("login");
+//        			myNewUser.setDtPunktzahl(0);
+//        			myRESTHandler.addUser(myNewUser);
+        			
+					// UPDATE
+        			
+        			
         		} else {
         			System.out.println("REST Socket FAILED");
         		}
