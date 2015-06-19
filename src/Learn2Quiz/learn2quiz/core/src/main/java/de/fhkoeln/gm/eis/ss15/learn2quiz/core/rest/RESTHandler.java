@@ -35,6 +35,7 @@ public class RESTHandler {
 	private WebTarget target;
 	private Client client;
 	private String baseURI;
+	private Socket sock;
 
 	public RESTHandler(String hostname, int port) {
 		this.hostname = hostname;
@@ -42,32 +43,48 @@ public class RESTHandler {
 		this.baseURI = "http://" + this.hostname + ":" + this.port + "/restservice/rest";
 	}
 
-	public boolean getConnection() {
-		
-		ClientConfig config = new ClientConfig(); 
-		if (this.hostname == null || this.port <= 0)
-			return false;
-
-		this.target = ClientBuilder.newClient(config).target("http://" + this.hostname + ":" + this.port);
-
-		Socket sock = null;
+//	public boolean getConnection() {
+//		
+//		ClientConfig config = new ClientConfig(); 
+//		if (this.hostname == null || this.port <= 0)
+//			return false;
+//
+//		this.target = ClientBuilder.newClient(config).target("http://" + this.hostname + ":" + this.port);
+//
+//		sock = null;
+//		try {
+//			sock = new Socket(hostname, port);
+//			return true;
+//		} catch (IOException e) {
+//		} finally {
+//			if (sock != null) {
+//				try {
+//					sock.close();
+//				} catch (IOException e) {
+//				}
+//			}
+//		}
+//
+//		return false;
+//	}
+	
+	public void closeSocket() {
 		try {
-			sock = new Socket(hostname, port);
-			return true;
+			sock.close();
 		} catch (IOException e) {
-		} finally {
-			if (sock != null) {
-				try {
-					sock.close();
-				} catch (IOException e) {
-				}
-			}
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-
-		return false;
 	}
 	
-		
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> USER RESOURCE <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+	
+	/**
+	 * Returns an User Object of Tbluser for a given userId
+	 *
+	 * @param  userId  The users unique ID
+	 * @return      User Object
+	 */
 	public Tbluser getUser(String userId) {
 		Tbluser myObj = null;
 			try {
@@ -91,6 +108,12 @@ public class RESTHandler {
 			return myObj;
 	}
 	
+	/**
+	 * Creates a new user from myUser
+	 *
+	 * @param  myUser  The new user object
+	 * @return      HTTPStatusCode (201, 404...)
+	 */
 	public int addUser(Tbluser myUser) {
 		int myStatusCode = -1;
 		try { 
@@ -117,6 +140,12 @@ public class RESTHandler {
 		return myStatusCode;
 	}
 	
+	/**
+	 * Updates a specific user (userId in myUser object)
+	 *
+	 * @param  myUser  The updated user object
+	 * @return      HTTPStatusCode (201, 404...)
+	 */
 	public int updateUser(Tbluser myUser) {
 		int myStatusCode = -1;
 		try {
@@ -143,6 +172,29 @@ public class RESTHandler {
 		return myStatusCode;
 	}
 	
+	/**
+	 * Deletes a specific user by given userId
+	 *
+	 * @param  userId  The users unique ID
+	 * @return      HTTPStatusCode (201, 404...)
+	 */
+	public int deleteUser(String userId) {
+		int myStatusCode = -1;
+		try {
+			String uri = baseURI + "/user/" + userId;
+	        URL url = new URL(uri);
+	        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+	        connection.setRequestMethod("DELETE");
+	        myStatusCode = connection.getResponseCode();
+	        connection.disconnect();
+	    } catch(Exception e) {
+	        throw new RuntimeException(e);
+	    }
+		return myStatusCode;
+	}
+	
+	
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> KARTEIKARTE RESOURCE <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<	
 	public Tblkarteikarte getKarteikarte(String karteikarteId) {
 		Tblkarteikarte myObj = null;
 			try {
@@ -163,7 +215,9 @@ public class RESTHandler {
 			}
 			return myObj;
 	}
+
 	
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> KARTENSET RESOURCE <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 	public Tblkartenset getKartenset(String kartensetId) {
 		Tblkartenset myObj = null;
 			try {
@@ -185,6 +239,7 @@ public class RESTHandler {
 			return myObj;
 	}
 
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> KOMMENTAR RESOURCE <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 	public Tblkommentar getKommentar(String kommentarId) {
 		Tblkommentar myObj = null;
 			try {
@@ -206,7 +261,7 @@ public class RESTHandler {
 			return myObj;
 	}
 	
-
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> GRUPPE RESOURCE <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 	public Tblgruppe getGruppe(String gruppeId) {
 		Tblgruppe myObj = null;
 			try {
@@ -227,7 +282,8 @@ public class RESTHandler {
 			}
 			return myObj;
 	}
-	
+
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> EINLADUNG RESOURCE <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 	public Tbleinladung getEinladung(String einladungId) {
 		Tbleinladung myObj = null;
 			try {

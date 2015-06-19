@@ -36,12 +36,30 @@ public class XMPPHandler {
 	public XMPPHandler(){
 	}
 	
+	public Boolean isConnected(){
+		if (xmppConn != null && xmppConn.isConnected()){
+			return true;
+		} else {
+			return false;			
+		}	
+	}
+	
+	public Boolean createAccount(String username, String password){
+		try {
+			accMngr.createAccount(username, password);
+			return true;
+		} catch (XMPPException e) {
+			e.printStackTrace();
+			return false;
+		}
+		
+	}
+	
 	public boolean connect(String hostname, int port){
 		
 		if (xmppConn != null && xmppConn.isConnected()){
 			return true;
 		}
-		
 		ConnectionConfiguration connConfig = new ConnectionConfiguration(hostname, port);
 		xmppConn = new XMPPConnection(connConfig);
 		
@@ -58,6 +76,10 @@ public class XMPPHandler {
 		this.hostname = hostname;
 		
 		return true;
+	}
+	
+	public void disconnect() {
+		xmppConn.disconnect();
 	}
 	
 	public boolean login(String user, String password){

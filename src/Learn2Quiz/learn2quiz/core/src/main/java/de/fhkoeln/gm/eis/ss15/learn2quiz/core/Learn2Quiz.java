@@ -58,6 +58,7 @@ public class Learn2Quiz extends Game {
 	@Override
 	public void create () {
 		myXMPPHandler = new XMPPHandler();
+		myXMPPHandler.connect("localhost", 5222);
 		myResourceHandler = new ResourceManager();
 		myInputMultiplexer = new InputMultiplexer();
 		mySceneLoader = new SceneLoader(myResourceHandler);
@@ -94,6 +95,7 @@ public class Learn2Quiz extends Game {
 
 	@Override
 	public void dispose () {
+		//myXMPPHandler.disconnect();
 		super.dispose();
 	}
 	
@@ -140,8 +142,6 @@ public class Learn2Quiz extends Game {
 		myDiscussionScreen = new DiscussionScreen(this);
 		setScreen(myDiscussionScreen);
 	}
-	
-
 	
 	public void showCardsset(){
 		myCardssetScreen = new CardsetsScreen(this);

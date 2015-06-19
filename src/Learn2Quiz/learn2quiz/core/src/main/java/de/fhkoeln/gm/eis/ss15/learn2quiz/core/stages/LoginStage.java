@@ -54,7 +54,7 @@ public class LoginStage extends Stage {
 		SimpleButtonScript btnLogin = SimpleButtonScript.selfInit(mySceneLoader.getRoot().getCompositeById("btnLogin"));
         btnLogin.addListener(new ClickListener() {
             public void clicked (InputEvent event, float x, float y) {
-            	if (!connected && myXMPPHandler.connect("localhost", 5222)){
+            	if (myXMPPHandler.isConnected()) {
         			if (myXMPPHandler.login(txtUsername.getText(), txtPassword.getText())){
         				System.out.println("Connect & Anmeldung erfolgreich!");
         				connected = true;
@@ -63,14 +63,11 @@ public class LoginStage extends Stage {
         				System.out.println("Anmeldung fehlgeschlagen!");
         			}
         		} else {
-        			System.out.println("Connect fehlgeschlagen!");
+        			System.out.println("NOT connected to XMPP!");
         		}
-            	
-            	if (myRESTHandler.getConnection()) {
-        			System.out.println("REST Socket OK");
         			
 //        			// GET USER BY ID
-//        			Tbluser myUser = myRESTHandler.getUser("1");
+        			Tbluser myUser = myRESTHandler.getUser("1");
 //        			System.out.println("Name: " + myUser.getDtBenutzername() + " - Email: " + myUser.getDtEmail());
         			
 //					// ADD NEW USER        			
@@ -83,10 +80,7 @@ public class LoginStage extends Stage {
         			
 					// UPDATE
         			
-        			
-        		} else {
-        			System.out.println("REST Socket FAILED");
-        		}
+ 
             }
         });
         
