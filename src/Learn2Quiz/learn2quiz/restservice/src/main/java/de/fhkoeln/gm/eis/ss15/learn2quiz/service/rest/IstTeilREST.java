@@ -85,6 +85,7 @@ public class IstTeilREST {
         }
  
         //Ideally we should check the id is a valid UUID. Not implementing for now
+        // TODO
         //istteil.setId(id);
         em.merge(istteil);
  

@@ -56,7 +56,7 @@ public class SpieltREST {
  
         //Build a uri with the spielt id appended to the absolute path
         //This is so the client gets the spielt id and also has the path to the resource created
-        URI spieltUri = uriInfo.getAbsolutePathBuilder().path(spielt.getIdSpielt()).build();
+        URI spieltUri = uriInfo.getAbsolutePathBuilder().path("").build();//URI spieltUri = uriInfo.getAbsolutePathBuilder().path(spielt.getId()).build();
  
         //The created response will not have a body. The spieltUri will be in the Header
         return Response.created(spieltUri).build();
@@ -91,7 +91,8 @@ public class SpieltREST {
         }
  
         //Ideally we should check the id is a valid UUID. Not implementing for now
-        spielt.setIdSpielt(id);
+        // TODO
+        //spielt.setIdSpielt(id);
         em.merge(spielt);
  
         return Response.ok().build();

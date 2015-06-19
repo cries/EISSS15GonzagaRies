@@ -5,6 +5,7 @@ import java.util.Collection;
  
 
 
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -26,6 +27,7 @@ import javax.ws.rs.core.UriInfo;
 
 import de.fhkoeln.gm.eis.ss15.learn2quiz.service.entities.Tblerhaelt;
 import de.fhkoeln.gm.eis.ss15.learn2quiz.service.entities.Tblerhaelt;
+import de.fhkoeln.gm.eis.ss15.learn2quiz.service.entities.TblerhaeltPK;
 
 @Path("/erhaelt")
 @Produces ({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
@@ -56,7 +58,7 @@ public class ErhaeltREST {
  
         //Build a uri with the erhaelt id appended to the absolute path
         //This is so the client gets the erhaelt id and also has the path to the resource created
-        URI erhaeltUri = uriInfo.getAbsolutePathBuilder().path(erhaelt.getIdErhaelt()).build();
+        URI erhaeltUri = uriInfo.getAbsolutePathBuilder().path("").build();//URI erhaeltUri = uriInfo.getAbsolutePathBuilder().path(erhaelt.getId()).build();
  
         //The created response will not have a body. The erhaeltUri will be in the Header
         return Response.created(erhaeltUri).build();
@@ -91,7 +93,8 @@ public class ErhaeltREST {
         }
  
         //Ideally we should check the id is a valid UUID. Not implementing for now
-        erhaelt.setIdErhaelt(id);
+        // TODO
+        erhaelt.setId(new TblerhaeltPK()); //erhaelt.setId(id);
         em.merge(erhaelt);
  
         return Response.ok().build();

@@ -13,6 +13,8 @@ import com.uwsoft.editor.renderer.SceneLoader;
 import com.uwsoft.editor.renderer.resources.ResourceManager;
 
 
+
+import de.fhkoeln.gm.eis.ss15.learn2quiz.core.rest.RESTHandler;
 import de.fhkoeln.gm.eis.ss15.learn2quiz.core.screens.CardsetsScreen;
 import de.fhkoeln.gm.eis.ss15.learn2quiz.core.screens.DiscussionScreen;
 import de.fhkoeln.gm.eis.ss15.learn2quiz.core.screens.GameCardsetScreen;
@@ -51,6 +53,8 @@ public class Learn2Quiz extends Game {
 	
 	public Skin mySkin;
 	
+	public RESTHandler myRESTHandler;
+	
 	@Override
 	public void create () {
 		myXMPPHandler = new XMPPHandler();
@@ -59,7 +63,7 @@ public class Learn2Quiz extends Game {
 		mySceneLoader = new SceneLoader(myResourceHandler);
 		myResourceHandler.initAllResources();
 		mySkin = new Skin( Gdx.files.internal( "uiskin.json" ));
-		
+		myRESTHandler = new RESTHandler("localhost", 8080);
 		myWelcomeScreen = new WelcomeScreen(this);
 		//myLoginScreen = new LoginScreen(this);
 		setScreen(myWelcomeScreen);

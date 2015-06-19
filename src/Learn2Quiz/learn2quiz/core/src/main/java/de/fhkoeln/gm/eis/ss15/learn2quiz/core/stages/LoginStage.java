@@ -11,6 +11,7 @@ import com.uwsoft.editor.renderer.resources.ResourceManager;
 import com.uwsoft.editor.renderer.script.SimpleButtonScript;
 
 import de.fhkoeln.gm.eis.ss15.learn2quiz.core.Learn2Quiz;
+import de.fhkoeln.gm.eis.ss15.learn2quiz.core.rest.RESTHandler;
 import de.fhkoeln.gm.eis.ss15.learn2quiz.core.xmpp.XMPPHandler;
 
 public class LoginStage extends Stage {
@@ -18,6 +19,7 @@ public class LoginStage extends Stage {
 	public ResourceManager myResourceMgr;
 	public SceneLoader mySceneLoader;
 	public XMPPHandler myXMPPHandler;
+	public RESTHandler myRESTHandler;
 	private Learn2Quiz myGame;
 	private Boolean connected = false;
 	private TextField txtUsername;
@@ -28,6 +30,7 @@ public class LoginStage extends Stage {
 		myXMPPHandler = myGame.myXMPPHandler;
 		myResourceMgr = myGame.myResourceHandler;
 		mySceneLoader = myGame.mySceneLoader;
+		myRESTHandler = myGame.myRESTHandler;
 		loadScene("LoginScreen");
 		addActor(mySceneLoader.getRoot());
 		
@@ -60,6 +63,12 @@ public class LoginStage extends Stage {
         			}
         		} else {
         			System.out.println("Connect fehlgeschlagen!");
+        		}
+            	
+            	if (myRESTHandler.getConnection()) {
+        			System.out.println("REST Socket OK");
+        		} else {
+        			System.out.println("REST Socket FAILED");
         		}
             }
         });
