@@ -20,6 +20,11 @@ import javax.xml.bind.JAXBException;
 
 import org.glassfish.jersey.client.*;
 
+import de.fhkoeln.gm.eis.ss15.learn2quiz.core.rest.entities.Tbleinladung;
+import de.fhkoeln.gm.eis.ss15.learn2quiz.core.rest.entities.Tblgruppe;
+import de.fhkoeln.gm.eis.ss15.learn2quiz.core.rest.entities.Tblkarteikarte;
+import de.fhkoeln.gm.eis.ss15.learn2quiz.core.rest.entities.Tblkartenset;
+import de.fhkoeln.gm.eis.ss15.learn2quiz.core.rest.entities.Tblkommentar;
 import de.fhkoeln.gm.eis.ss15.learn2quiz.core.rest.entities.Tbluser;
  
 
@@ -63,7 +68,7 @@ public class RESTHandler {
 	
 		
 	public Tbluser getUser(String userId) {
-		Tbluser user = null;
+		Tbluser myObj = null;
 			try {
 				String uri = baseURI + "/user/" + userId;
 					URL url = new URL(uri);
@@ -74,12 +79,120 @@ public class RESTHandler {
 					JAXBContext jc = JAXBContext.newInstance(Tbluser.class);
 					InputStream xml = connection.getInputStream();
 					if (connection.getResponseCode() == 200)  {
-						user = (Tbluser) jc.createUnmarshaller().unmarshal(xml);
+						myObj = (Tbluser) jc.createUnmarshaller().unmarshal(xml);
 					}
 					connection.disconnect();
 			} catch (Exception e) {
 				throw new RuntimeException(e);
 			}
-			return user;
+			return myObj;
+			
 	}
+	
+	public Tblkarteikarte getKarteikarte(String karteikarteId) {
+		Tblkarteikarte myObj = null;
+			try {
+				String uri = baseURI + "/card/" + karteikarteId;
+					URL url = new URL(uri);
+					HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+					connection.setRequestMethod("GET");
+					connection.setRequestProperty("Accept", "application/xml");
+				 
+					JAXBContext jc = JAXBContext.newInstance(Tblkarteikarte.class);
+					InputStream xml = connection.getInputStream();
+					if (connection.getResponseCode() == 200)  {
+						myObj = (Tblkarteikarte) jc.createUnmarshaller().unmarshal(xml);
+					}
+					connection.disconnect();
+			} catch (Exception e) {
+				throw new RuntimeException(e);
+			}
+			return myObj;
+	}
+	
+	public Tblkartenset getKartenset(String kartensetId) {
+		Tblkartenset myObj = null;
+			try {
+				String uri = baseURI + "/cardset/" + kartensetId;
+					URL url = new URL(uri);
+					HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+					connection.setRequestMethod("GET");
+					connection.setRequestProperty("Accept", "application/xml");
+				 
+					JAXBContext jc = JAXBContext.newInstance(Tblkartenset.class);
+					InputStream xml = connection.getInputStream();
+					if (connection.getResponseCode() == 200)  {
+						myObj = (Tblkartenset) jc.createUnmarshaller().unmarshal(xml);
+					}
+					connection.disconnect();
+			} catch (Exception e) {
+				throw new RuntimeException(e);
+			}
+			return myObj;
+	}
+
+	public Tblkommentar getKommentar(String kommentarId) {
+		Tblkommentar myObj = null;
+			try {
+				String uri = baseURI + "/comment/" + kommentarId;
+					URL url = new URL(uri);
+					HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+					connection.setRequestMethod("GET");
+					connection.setRequestProperty("Accept", "application/xml");
+				 
+					JAXBContext jc = JAXBContext.newInstance(Tblkommentar.class);
+					InputStream xml = connection.getInputStream();
+					if (connection.getResponseCode() == 200)  {
+						myObj = (Tblkommentar) jc.createUnmarshaller().unmarshal(xml);
+					}
+					connection.disconnect();
+			} catch (Exception e) {
+				throw new RuntimeException(e);
+			}
+			return myObj;
+	}
+	
+
+	public Tblgruppe getGruppe(String gruppeId) {
+		Tblgruppe myObj = null;
+			try {
+				String uri = baseURI + "/group/" + gruppeId;
+					URL url = new URL(uri);
+					HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+					connection.setRequestMethod("GET");
+					connection.setRequestProperty("Accept", "application/xml");
+				 
+					JAXBContext jc = JAXBContext.newInstance(Tblgruppe.class);
+					InputStream xml = connection.getInputStream();
+					if (connection.getResponseCode() == 200)  {
+						myObj = (Tblgruppe) jc.createUnmarshaller().unmarshal(xml);
+					}
+					connection.disconnect();
+			} catch (Exception e) {
+				throw new RuntimeException(e);
+			}
+			return myObj;
+	}
+	
+	public Tbleinladung getEinladung(String einladungId) {
+		Tbleinladung myObj = null;
+			try {
+				String uri = baseURI + "/invite/" + einladungId;
+					URL url = new URL(uri);
+					HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+					connection.setRequestMethod("GET");
+					connection.setRequestProperty("Accept", "application/xml");
+				 
+					JAXBContext jc = JAXBContext.newInstance(Tbleinladung.class);
+					InputStream xml = connection.getInputStream();
+					if (connection.getResponseCode() == 200)  {
+						myObj = (Tbleinladung) jc.createUnmarshaller().unmarshal(xml);
+					}
+					connection.disconnect();
+			} catch (Exception e) {
+				throw new RuntimeException(e);
+			}
+			return myObj;
+	}
+	
 }
