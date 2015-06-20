@@ -280,6 +280,27 @@ public class RESTHandler {
 		return myStatusCode;
 	}
 	
+	/**
+	 * Deletes a specific card by given cardId
+	 *
+	 * @param  cardId  The cards unique ID
+	 * @return      HTTPStatusCode (201, 404...)
+	 */
+	public int deleteKarteikarte(String cardId) {
+		int myStatusCode = -1;
+		try {
+			String uri = baseURI + "/card/" + cardId;
+	        URL url = new URL(uri);
+	        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+	        connection.setRequestMethod("DELETE");
+	        myStatusCode = connection.getResponseCode();
+	        connection.disconnect();
+	    } catch(Exception e) {
+	        throw new RuntimeException(e);
+	    }
+		return myStatusCode;
+	}
+	
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> KARTENSET RESOURCE <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 	public Tblkartenset getKartenset(String kartensetId) {
 		Tblkartenset myObj = null;
@@ -365,6 +386,28 @@ public class RESTHandler {
 	    }
 		return myStatusCode;
 	}
+	
+	/**
+	 * Deletes a specific cardset by given cardsetId
+	 *
+	 * @param  cardsetId  The cardsets unique ID
+	 * @return      HTTPStatusCode (201, 404...)
+	 */
+	public int deleteKartenset(String cardsetId) {
+		int myStatusCode = -1;
+		try {
+			String uri = baseURI + "/cardset/" + cardsetId;
+	        URL url = new URL(uri);
+	        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+	        connection.setRequestMethod("DELETE");
+	        myStatusCode = connection.getResponseCode();
+	        connection.disconnect();
+	    } catch(Exception e) {
+	        throw new RuntimeException(e);
+	    }
+		return myStatusCode;
+	}
+	
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> KOMMENTAR RESOURCE <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 	public Tblkommentar getKommentar(String kommentarId) {
 		Tblkommentar myObj = null;
@@ -443,6 +486,27 @@ public class RESTHandler {
 	        jc.createMarshaller().marshal(myComment, os);
 	        os.flush();
 
+	        myStatusCode = connection.getResponseCode();
+	        connection.disconnect();
+	    } catch(Exception e) {
+	        throw new RuntimeException(e);
+	    }
+		return myStatusCode;
+	}
+	
+	/**
+	 * Deletes a specific comment by given commentId
+	 *
+	 * @param  commentId  The comments unique ID
+	 * @return      HTTPStatusCode (201, 404...)
+	 */
+	public int deleteKommentar(String commentId) {
+		int myStatusCode = -1;
+		try {
+			String uri = baseURI + "/comment/" + commentId;
+	        URL url = new URL(uri);
+	        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+	        connection.setRequestMethod("DELETE");
 	        myStatusCode = connection.getResponseCode();
 	        connection.disconnect();
 	    } catch(Exception e) {
@@ -537,6 +601,27 @@ public class RESTHandler {
 		return myStatusCode;
 	}
 	
+	/**
+	 * Deletes a specific group by given groupId
+	 *
+	 * @param  groupId  The groups unique ID
+	 * @return      HTTPStatusCode (201, 404...)
+	 */
+	public int deleteGruppe(String groupId) {
+		int myStatusCode = -1;
+		try {
+			String uri = baseURI + "/group/" + groupId;
+	        URL url = new URL(uri);
+	        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+	        connection.setRequestMethod("DELETE");
+	        myStatusCode = connection.getResponseCode();
+	        connection.disconnect();
+	    } catch(Exception e) {
+	        throw new RuntimeException(e);
+	    }
+		return myStatusCode;
+	}
+	
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> EINLADUNG RESOURCE <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 	public Tbleinladung getEinladung(String einladungId) {
 		Tbleinladung myObj = null;
@@ -622,4 +707,26 @@ public class RESTHandler {
 	    }
 		return myStatusCode;
 	}
+	
+	/**
+	 * Deletes a specific invite by given inviteId
+	 *
+	 * @param  inviteId  The invites unique ID
+	 * @return      HTTPStatusCode (201, 404...)
+	 */
+	public int deleteEinladung(String inviteId) {
+		int myStatusCode = -1;
+		try {
+			String uri = baseURI + "/invite/" + inviteId;
+	        URL url = new URL(uri);
+	        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+	        connection.setRequestMethod("DELETE");
+	        myStatusCode = connection.getResponseCode();
+	        connection.disconnect();
+	    } catch(Exception e) {
+	        throw new RuntimeException(e);
+	    }
+		return myStatusCode;
+	}
+	
 }
