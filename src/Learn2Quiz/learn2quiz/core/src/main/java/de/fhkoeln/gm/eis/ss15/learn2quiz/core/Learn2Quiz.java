@@ -14,6 +14,7 @@ import com.uwsoft.editor.renderer.resources.ResourceManager;
 
 
 
+
 import de.fhkoeln.gm.eis.ss15.learn2quiz.core.rest.RESTHandler;
 import de.fhkoeln.gm.eis.ss15.learn2quiz.core.screens.CardsetsScreen;
 import de.fhkoeln.gm.eis.ss15.learn2quiz.core.screens.DiscussionScreen;
@@ -146,6 +147,10 @@ public class Learn2Quiz extends Game {
 	public void showCardsset(){
 		myCardssetScreen = new CardsetsScreen(this);
 		setScreen(myCardssetScreen);
+	}
+
+	public void receiveNotification(String xml) {
+		System.out.println("XMPP Notification: " + xml);
 	}
 }
 
