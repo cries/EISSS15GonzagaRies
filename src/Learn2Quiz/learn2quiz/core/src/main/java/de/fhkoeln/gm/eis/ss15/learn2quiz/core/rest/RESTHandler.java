@@ -248,6 +248,38 @@ public class RESTHandler {
 		return myStatusCode;
 	}
 	
+	/**
+	 * Updates a specific card (cardId in myCard object)
+	 *
+	 * @param  myCard  The updated card object
+	 * @return      HTTPStatusCode (201, 404...)
+	 */
+	public int updateKarteikarte(Tblkarteikarte myCard) {
+		int myStatusCode = -1;
+		try {
+			String uri = baseURI + "/card";
+	        URL url = new URL(uri);
+	        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+	        connection.setDoOutput(true);
+	        connection.setInstanceFollowRedirects(false);
+	        connection.setRequestMethod("PUT");
+	        connection.setRequestProperty("Content-Type", "application/xml");
+	        
+	        JAXBContext jc = JAXBContext.newInstance(Tblkarteikarte.class);
+	        OutputStream os = connection.getOutputStream();
+	        
+	        // Write object to OutputStream
+	        jc.createMarshaller().marshal(myCard, os);
+	        os.flush();
+
+	        myStatusCode = connection.getResponseCode();
+	        connection.disconnect();
+	    } catch(Exception e) {
+	        throw new RuntimeException(e);
+	    }
+		return myStatusCode;
+	}
+	
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> KARTENSET RESOURCE <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 	public Tblkartenset getKartenset(String kartensetId) {
 		Tblkartenset myObj = null;
@@ -285,6 +317,38 @@ public class RESTHandler {
 	        connection.setDoOutput(true);
 	        connection.setInstanceFollowRedirects(false);
 	        connection.setRequestMethod("POST");
+	        connection.setRequestProperty("Content-Type", "application/xml");
+	        
+	        JAXBContext jc = JAXBContext.newInstance(Tblkartenset.class);
+	        OutputStream os = connection.getOutputStream();
+	        
+	        // Write object to OutputStream
+	        jc.createMarshaller().marshal(myCardset, os);
+	        os.flush();
+
+	        myStatusCode = connection.getResponseCode();
+	        connection.disconnect();
+	    } catch(Exception e) {
+	        throw new RuntimeException(e);
+	    }
+		return myStatusCode;
+	}
+	
+	/**
+	 * Updates a specific cardset (cardsetId in myCardset object)
+	 *
+	 * @param  myCardset  The updated cardset object
+	 * @return      HTTPStatusCode (201, 404...)
+	 */
+	public int updateKartenset(Tblkartenset myCardset) {
+		int myStatusCode = -1;
+		try {
+			String uri = baseURI + "/cardset";
+	        URL url = new URL(uri);
+	        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+	        connection.setDoOutput(true);
+	        connection.setInstanceFollowRedirects(false);
+	        connection.setRequestMethod("PUT");
 	        connection.setRequestProperty("Content-Type", "application/xml");
 	        
 	        JAXBContext jc = JAXBContext.newInstance(Tblkartenset.class);
@@ -354,6 +418,39 @@ public class RESTHandler {
 	    }
 		return myStatusCode;
 	}
+	
+	/**
+	 * Updates a specific comment (commentId in myComment object)
+	 *
+	 * @param  myComment  The updated comment object
+	 * @return      HTTPStatusCode (201, 404...)
+	 */
+	public int updateKommentar(Tblkommentar myComment) {
+		int myStatusCode = -1;
+		try {
+			String uri = baseURI + "/comment";
+	        URL url = new URL(uri);
+	        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+	        connection.setDoOutput(true);
+	        connection.setInstanceFollowRedirects(false);
+	        connection.setRequestMethod("PUT");
+	        connection.setRequestProperty("Content-Type", "application/xml");
+	        
+	        JAXBContext jc = JAXBContext.newInstance(Tblkommentar.class);
+	        OutputStream os = connection.getOutputStream();
+	        
+	        // Write object to OutputStream
+	        jc.createMarshaller().marshal(myComment, os);
+	        os.flush();
+
+	        myStatusCode = connection.getResponseCode();
+	        connection.disconnect();
+	    } catch(Exception e) {
+	        throw new RuntimeException(e);
+	    }
+		return myStatusCode;
+	}
+	
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> GRUPPE RESOURCE <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 	public Tblgruppe getGruppe(String gruppeId) {
 		Tblgruppe myObj = null;
@@ -407,6 +504,39 @@ public class RESTHandler {
 	    }
 		return myStatusCode;
 	}
+	
+	/**
+	 * Updates a specific group (groupId in myGroup object)
+	 *
+	 * @param  myGroup  The updated group object
+	 * @return      HTTPStatusCode (201, 404...)
+	 */
+	public int updateGruppe(Tblgruppe myGroup) {
+		int myStatusCode = -1;
+		try {
+			String uri = baseURI + "/group";
+	        URL url = new URL(uri);
+	        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+	        connection.setDoOutput(true);
+	        connection.setInstanceFollowRedirects(false);
+	        connection.setRequestMethod("PUT");
+	        connection.setRequestProperty("Content-Type", "application/xml");
+	        
+	        JAXBContext jc = JAXBContext.newInstance(Tblgruppe.class);
+	        OutputStream os = connection.getOutputStream();
+	        
+	        // Write object to OutputStream
+	        jc.createMarshaller().marshal(myGroup, os);
+	        os.flush();
+
+	        myStatusCode = connection.getResponseCode();
+	        connection.disconnect();
+	    } catch(Exception e) {
+	        throw new RuntimeException(e);
+	    }
+		return myStatusCode;
+	}
+	
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> EINLADUNG RESOURCE <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 	public Tbleinladung getEinladung(String einladungId) {
 		Tbleinladung myObj = null;
@@ -444,6 +574,38 @@ public class RESTHandler {
 	        connection.setDoOutput(true);
 	        connection.setInstanceFollowRedirects(false);
 	        connection.setRequestMethod("POST");
+	        connection.setRequestProperty("Content-Type", "application/xml");
+	        
+	        JAXBContext jc = JAXBContext.newInstance(Tbleinladung.class);
+	        OutputStream os = connection.getOutputStream();
+	        
+	        // Write object to OutputStream
+	        jc.createMarshaller().marshal(myInvite, os);
+	        os.flush();
+
+	        myStatusCode = connection.getResponseCode();
+	        connection.disconnect();
+	    } catch(Exception e) {
+	        throw new RuntimeException(e);
+	    }
+		return myStatusCode;
+	}
+	
+	/**
+	 * Updates a specific invite (inviteId in myInvite object)
+	 *
+	 * @param  myInvite  The updated invite object
+	 * @return      HTTPStatusCode (201, 404...)
+	 */
+	public int updateEinladung(Tbleinladung myInvite) {
+		int myStatusCode = -1;
+		try {
+			String uri = baseURI + "/invite";
+	        URL url = new URL(uri);
+	        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+	        connection.setDoOutput(true);
+	        connection.setInstanceFollowRedirects(false);
+	        connection.setRequestMethod("PUT");
 	        connection.setRequestProperty("Content-Type", "application/xml");
 	        
 	        JAXBContext jc = JAXBContext.newInstance(Tbleinladung.class);
