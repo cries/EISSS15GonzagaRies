@@ -79,6 +79,7 @@ public class RegisterStage extends Stage {
             		System.out.println(txtPassword.getText() + " = " + txtValPassword.getText());
             		if (txtPassword.getText().equals(txtValPassword.getText())) {
             			Tbluser myUser = new Tbluser();
+            			myUser.setIdUser(txtUsername.getText());
             			myUser.setDtBenutzername(txtUsername.getText());
             			myUser.setDtEmail(txtEmail.getText());
             			myUser.setDtPasswort(txtPassword.getText());

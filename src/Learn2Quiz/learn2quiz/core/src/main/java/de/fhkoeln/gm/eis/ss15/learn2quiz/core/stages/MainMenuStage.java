@@ -33,7 +33,8 @@ public class MainMenuStage extends Stage {
 		SimpleButtonScript btnGruppen = SimpleButtonScript.selfInit(mySceneLoader.getRoot().getCompositeById("btnGruppen"));
 		btnGruppen.addListener(new ClickListener() {
             public void clicked (InputEvent event, float x, float y) {
-            	myGame.showGroups();
+            	myXMPPHandler.publishItemPayload("testNode2", "elemName", "payloadData");
+            	//myGame.showGroups();
             }
         });
         

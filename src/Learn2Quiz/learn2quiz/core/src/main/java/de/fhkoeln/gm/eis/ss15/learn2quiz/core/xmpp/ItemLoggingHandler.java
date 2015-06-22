@@ -16,6 +16,7 @@ public class ItemLoggingHandler implements ItemEventListener<Item>{
 		this.myDesktopApp = myDesktopApp;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public void handlePublishedItems(ItemPublishEvent<Item> event) {
 		for (Item currItem: event.getItems()) {

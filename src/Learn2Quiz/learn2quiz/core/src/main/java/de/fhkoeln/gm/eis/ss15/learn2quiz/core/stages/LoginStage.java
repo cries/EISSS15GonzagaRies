@@ -13,6 +13,7 @@ import com.uwsoft.editor.renderer.script.SimpleButtonScript;
 import de.fhkoeln.gm.eis.ss15.learn2quiz.core.Learn2Quiz;
 import de.fhkoeln.gm.eis.ss15.learn2quiz.core.rest.RESTHandler;
 import de.fhkoeln.gm.eis.ss15.learn2quiz.core.rest.entities.Tbluser;
+import de.fhkoeln.gm.eis.ss15.learn2quiz.core.xmpp.ItemLoggingHandler;
 import de.fhkoeln.gm.eis.ss15.learn2quiz.core.xmpp.XMPPHandler;
 
 public class LoginStage extends Stage {
@@ -65,10 +66,11 @@ public class LoginStage extends Stage {
         		} else {
         			System.out.println("NOT connected to XMPP!");
         		}
-        			
-//        			// GET USER BY ID
-        			Tbluser myUser = myRESTHandler.getUser("1");
-//        			System.out.println("Name: " + myUser.getDtBenutzername() + " - Email: " + myUser.getDtEmail());
+            		myXMPPHandler.addItemListener(new ItemLoggingHandler(myGame));
+            		
+        			// GET USER BY ID
+        			Tbluser myUser = myRESTHandler.getUser(txtUsername.getText());
+        			System.out.println("Welcome " + myUser.getDtBenutzername() + " - Email: " + myUser.getDtEmail());
         			
 //					// ADD NEW USER        			
 //        			Tbluser myNewUser = new Tbluser();
@@ -80,7 +82,11 @@ public class LoginStage extends Stage {
         			
 					// UPDATE
         			
- 
+        			//myXMPPHandler.createNode("testNode2");
+        			//myXMPPHandler.subscribeToNode("testNode2");
+        			
+        			//myXMPPHandler.publishItemPayload("testNode2", "elem1", "test");
+        			//System.out.println(myXMPPHandler.getNodeInformation("testNode2"));
             }
         });
         

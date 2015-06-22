@@ -15,6 +15,7 @@ import com.uwsoft.editor.renderer.resources.ResourceManager;
 
 
 
+
 import de.fhkoeln.gm.eis.ss15.learn2quiz.core.rest.RESTHandler;
 import de.fhkoeln.gm.eis.ss15.learn2quiz.core.screens.CardsetsScreen;
 import de.fhkoeln.gm.eis.ss15.learn2quiz.core.screens.DiscussionScreen;
@@ -28,6 +29,7 @@ import de.fhkoeln.gm.eis.ss15.learn2quiz.core.screens.RegisterScreen;
 import de.fhkoeln.gm.eis.ss15.learn2quiz.core.screens.WelcomeScreen;
 import de.fhkoeln.gm.eis.ss15.learn2quiz.core.stages.LoginStage;
 import de.fhkoeln.gm.eis.ss15.learn2quiz.core.stages.WelcomeStage;
+import de.fhkoeln.gm.eis.ss15.learn2quiz.core.xmpp.ItemLoggingHandler;
 import de.fhkoeln.gm.eis.ss15.learn2quiz.core.xmpp.XMPPHandler;
 
 public class Learn2Quiz extends Game {

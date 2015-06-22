@@ -201,8 +201,9 @@ public class XMPPHandler {
 		
 		try {
 			node = (LeafNode) pubSubMngr.getNode(nodeId);
-			node.addItemEventListener(listener);
 			node.subscribe(this.username + "@" + this.hostname);
+			node.addItemEventListener(listener);
+			
 		} catch (XMPPException e) {
 			 System.err.println("Unknown errorcode: " + e.getXMPPError().getCode());
              return false;
@@ -218,6 +219,7 @@ public class XMPPHandler {
             node.removeItemEventListener(listener);
         } catch (XMPPException e) {
             System.err.println("Unsubscribing failed!");
+            e.printStackTrace();
             return false;
         }
         
@@ -226,7 +228,8 @@ public class XMPPHandler {
 	
 	public void addItemListener(ItemEventListener<Item> listener) {
         this.listener = listener;
-        //attachListenerToSubNodes();
+        
+        attachListenerToSubNodes();
     }
 	
 	private void attachListenerToSubNodes() {
