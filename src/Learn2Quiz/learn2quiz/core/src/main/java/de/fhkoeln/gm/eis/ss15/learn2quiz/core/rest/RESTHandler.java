@@ -168,11 +168,11 @@ public class RESTHandler {
 		return myStatusCode;
 	}
 	
-	public List<Tbluser> getUsers(){
+	public List<Tbluser> getUsers(String idGruppe){
 		List<Tbluser> myUsers = null;
 		
 		try {
-			String uri = baseURI + "/user";
+			String uri = baseURI + "/group/" + idGruppe + "/users";
 				URL url = new URL(uri);
 				HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 				connection.setRequestMethod("GET");
@@ -303,6 +303,33 @@ public class RESTHandler {
 		return myStatusCode;
 	}
 	
+	public List<Tblkarteikarte> getKarteikarten(String idKartenset){
+		List<Tblkarteikarte> myKarteikarten = null;
+		
+		try {
+			String uri = baseURI + "/cardset/" + idKartenset + "/cards";
+				URL url = new URL(uri);
+				HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+				connection.setRequestMethod("GET");
+				connection.setRequestProperty("Accept", "application/xml");
+			 
+				JAXBContext jc = JAXBContext.newInstance(ListWrapper.class, Tblkarteikarte.class);
+				Unmarshaller unmarshaller = jc.createUnmarshaller();
+				InputStream xml = connection.getInputStream();
+
+				// Get object from InputStream
+				if (connection.getResponseCode() == 200)  {
+					myKarteikarten = unmarshalList(unmarshaller, xml);
+				}
+				connection.disconnect();
+				
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+		
+		return myKarteikarten;
+	}
+	
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> KARTENSET RESOURCE <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 	public Tblkartenset getKartenset(String kartensetId) {
 		Tblkartenset myObj = null;
@@ -410,6 +437,8 @@ public class RESTHandler {
 		return myStatusCode;
 	}
 	
+	
+	
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> KOMMENTAR RESOURCE <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 	public Tblkommentar getKommentar(String kommentarId) {
 		Tblkommentar myObj = null;
@@ -515,6 +544,35 @@ public class RESTHandler {
 	        throw new RuntimeException(e);
 	    }
 		return myStatusCode;
+	}
+	
+	
+
+	public List<Tblkommentar> getKommentare(String idKarteikarte){
+		List<Tblkommentar> myKommentare = null;
+		
+		try {
+			String uri = baseURI + "/card/" + idKarteikarte + "/comments";
+				URL url = new URL(uri);
+				HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+				connection.setRequestMethod("GET");
+				connection.setRequestProperty("Accept", "application/xml");
+			 
+				JAXBContext jc = JAXBContext.newInstance(ListWrapper.class, Tblkommentar.class);
+				Unmarshaller unmarshaller = jc.createUnmarshaller();
+				InputStream xml = connection.getInputStream();
+
+				// Get object from InputStream
+				if (connection.getResponseCode() == 200)  {
+					myKommentare = unmarshalList(unmarshaller, xml);
+				}
+				connection.disconnect();
+				
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+		
+		return myKommentare;
 	}
 	
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> GRUPPE RESOURCE <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
@@ -624,6 +682,33 @@ public class RESTHandler {
 		return myStatusCode;
 	}
 	
+	public List<Tblgruppe> getGruppen(String idUser){
+		List<Tblgruppe> myGruppen = null;
+		
+		try {
+			String uri = baseURI + "/user/" + idUser + "/groups";
+				URL url = new URL(uri);
+				HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+				connection.setRequestMethod("GET");
+				connection.setRequestProperty("Accept", "application/xml");
+			 
+				JAXBContext jc = JAXBContext.newInstance(ListWrapper.class, Tblgruppe.class);
+				Unmarshaller unmarshaller = jc.createUnmarshaller();
+				InputStream xml = connection.getInputStream();
+
+				// Get object from InputStream
+				if (connection.getResponseCode() == 200)  {
+					myGruppen = unmarshalList(unmarshaller, xml);
+				}
+				connection.disconnect();
+				
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+		
+		return myGruppen;
+	}
+	
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> EINLADUNG RESOURCE <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 	public Tbleinladung getEinladung(String einladungId) {
 		Tbleinladung myObj = null;
@@ -729,6 +814,33 @@ public class RESTHandler {
 	        throw new RuntimeException(e);
 	    }
 		return myStatusCode;
+	}
+	
+	public List<Tbleinladung> getEinladungen(String idUser){
+		List<Tbleinladung> myEinladungen = null;
+		
+		try {
+			String uri = baseURI + "/user/" + idUser + "/invites";
+				URL url = new URL(uri);
+				HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+				connection.setRequestMethod("GET");
+				connection.setRequestProperty("Accept", "application/xml");
+			 
+				JAXBContext jc = JAXBContext.newInstance(ListWrapper.class, Tbleinladung.class);
+				Unmarshaller unmarshaller = jc.createUnmarshaller();
+				InputStream xml = connection.getInputStream();
+
+				// Get object from InputStream
+				if (connection.getResponseCode() == 200)  {
+					myEinladungen = unmarshalList(unmarshaller, xml);
+				}
+				connection.disconnect();
+				
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+		
+		return myEinladungen;
 	}
 	
 	/**
