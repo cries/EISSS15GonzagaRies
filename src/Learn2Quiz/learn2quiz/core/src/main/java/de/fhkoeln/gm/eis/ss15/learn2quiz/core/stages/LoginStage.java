@@ -1,5 +1,8 @@
 package de.fhkoeln.gm.eis.ss15.learn2quiz.core.stages;
 
+import java.util.Iterator;
+import java.util.List;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -12,6 +15,7 @@ import com.uwsoft.editor.renderer.script.SimpleButtonScript;
 
 import de.fhkoeln.gm.eis.ss15.learn2quiz.core.Learn2Quiz;
 import de.fhkoeln.gm.eis.ss15.learn2quiz.core.rest.RESTHandler;
+import de.fhkoeln.gm.eis.ss15.learn2quiz.core.rest.entities.Tblkarteikarte;
 import de.fhkoeln.gm.eis.ss15.learn2quiz.core.rest.entities.Tbluser;
 import de.fhkoeln.gm.eis.ss15.learn2quiz.core.xmpp.ItemLoggingHandler;
 import de.fhkoeln.gm.eis.ss15.learn2quiz.core.xmpp.XMPPHandler;
@@ -71,6 +75,14 @@ public class LoginStage extends Stage {
         			// GET USER BY ID
         			Tbluser myUser = myRESTHandler.getUser(txtUsername.getText());
         			System.out.println("Welcome " + myUser.getDtBenutzername() + " - Email: " + myUser.getDtEmail());
+        			
+        			List<Tblkarteikarte> myCards = myRESTHandler.getKartenset("1").getTblkarteikartes(); 
+        			
+        			Iterator<Tblkarteikarte> iterator = myCards.iterator();
+        			while(iterator.hasNext()) {
+        			    Tblkarteikarte myCard = (Tblkarteikarte) iterator.next();
+        			    System.out.println("Card id: " + myCard.getIdKarteikarte() + "Question: " + myCard.getDtFrage());
+        			}
         			
 //					// ADD NEW USER        			
 //        			Tbluser myNewUser = new Tbluser();
