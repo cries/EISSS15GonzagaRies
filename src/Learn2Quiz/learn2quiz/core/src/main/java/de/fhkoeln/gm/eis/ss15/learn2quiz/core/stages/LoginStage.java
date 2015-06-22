@@ -73,32 +73,9 @@ public class LoginStage extends Stage {
             		myXMPPHandler.addItemListener(new ItemLoggingHandler(myGame));
             		
         			// GET USER BY ID
-        			Tbluser myUser = myRESTHandler.getUser(txtUsername.getText());
-        			System.out.println("Welcome " + myUser.getDtBenutzername() + " - Email: " + myUser.getDtEmail());
+        			//Tbluser myUser = myRESTHandler.getUser(txtUsername.getText());
+        			//System.out.println("Welcome " + myUser.getDtBenutzername() + " - Email: " + myUser.getDtEmail());
         			
-        			List<Tblkarteikarte> myCards = myRESTHandler.getKartenset("1").getTblkarteikartes(); 
-        			
-        			Iterator<Tblkarteikarte> iterator = myCards.iterator();
-        			while(iterator.hasNext()) {
-        			    Tblkarteikarte myCard = (Tblkarteikarte) iterator.next();
-        			    System.out.println("Card id: " + myCard.getIdKarteikarte() + "Question: " + myCard.getDtFrage());
-        			}
-        			
-//					// ADD NEW USER        			
-//        			Tbluser myNewUser = new Tbluser();
-//        			myNewUser.setDtBenutzername("TestUser");
-//        			myNewUser.setDtEmail("user@email.com");
-//        			myNewUser.setDtPasswort("login");
-//        			myNewUser.setDtPunktzahl(0);
-//        			myRESTHandler.addUser(myNewUser);
-        			
-					// UPDATE
-        			
-        			//myXMPPHandler.createNode("testNode2");
-        			//myXMPPHandler.subscribeToNode("testNode2");
-        			
-        			//myXMPPHandler.publishItemPayload("testNode2", "elem1", "test");
-        			//System.out.println(myXMPPHandler.getNodeInformation("testNode2"));
             }
         });
         
