@@ -73,7 +73,7 @@ public class GruppeREST {
     //will handle converting the collection to xml or json as the body
     @GET
     public Collection<Tblgruppe> getgruppes(){
-        TypedQuery<Tblgruppe> query = em.createNamedQuery("gruppe.findAll", Tblgruppe.class);
+        TypedQuery<Tblgruppe> query = em.createNamedQuery("Tblgruppe.findAll", Tblgruppe.class);
         return query.getResultList();
     }
  
