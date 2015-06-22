@@ -15,7 +15,7 @@ import java.util.List;
  * The persistent class for the tblkarteikarte database table.
  * 
  */
-@UuidGenerator(name="UUID")
+@UuidGenerator(name="cardUUID")
 @XmlRootElement
 
 @Entity
@@ -24,7 +24,7 @@ public class Tblkarteikarte implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(generator="UUID")
+	@GeneratedValue(generator="cardUUID")
 	private String idKarteikarte;
 
 	private String dtDritteAlt;
@@ -39,7 +39,7 @@ public class Tblkarteikarte implements Serializable {
 
 	private String dtSchwierigkeit;
 
-	private Timestamp dtTimestamp;
+	private String dtTimestamp;
 
 	private String dtZweiteAlt;
 
@@ -118,11 +118,11 @@ public class Tblkarteikarte implements Serializable {
 		this.dtSchwierigkeit = dtSchwierigkeit;
 	}
 
-	public Timestamp getDtTimestamp() {
+	public String getDtTimestamp() {
 		return this.dtTimestamp;
 	}
 
-	public void setDtTimestamp(Timestamp dtTimestamp) {
+	public void setDtTimestamp(String dtTimestamp) {
 		this.dtTimestamp = dtTimestamp;
 	}
 

@@ -15,7 +15,7 @@ import java.util.List;
  * The persistent class for the tbleinladung database table.
  * 
  */
-@UuidGenerator(name="UUID")
+@UuidGenerator(name="inviteUUID")
 @XmlRootElement
 
 @Entity
@@ -24,10 +24,10 @@ public class Tbleinladung implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(generator="UUID")
+	@GeneratedValue(generator="inviteUUID")
 	private String idEinladung;
 
-	private Timestamp dtTimestamp;
+	private String dtTimestamp;
 
 	//bi-directional many-to-one association to Tblgruppe
 	@ManyToOne
@@ -54,11 +54,11 @@ public class Tbleinladung implements Serializable {
 		this.idEinladung = idEinladung;
 	}
 
-	public Timestamp getDtTimestamp() {
+	public String getDtTimestamp() {
 		return this.dtTimestamp;
 	}
 
-	public void setDtTimestamp(Timestamp dtTimestamp) {
+	public void setDtTimestamp(String dtTimestamp) {
 		this.dtTimestamp = dtTimestamp;
 	}
 

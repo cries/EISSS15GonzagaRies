@@ -15,7 +15,7 @@ import java.util.List;
  * The persistent class for the tblkartenset database table.
  * 
  */
-@UuidGenerator(name="UUID")
+@UuidGenerator(name="cardsetUUID")
 @XmlRootElement
 
 @Entity
@@ -24,10 +24,10 @@ public class Tblkartenset implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(generator="UUID")
+	@GeneratedValue(generator="cardsetUUID")
 	private String idKartenset;
 
-	private Timestamp dtTimestamp;
+	private String dtTimestamp;
 
 	private String dtTitel;
 
@@ -60,11 +60,11 @@ public class Tblkartenset implements Serializable {
 		this.idKartenset = idKartenset;
 	}
 
-	public Timestamp getDtTimestamp() {
+	public String getDtTimestamp() {
 		return this.dtTimestamp;
 	}
 
-	public void setDtTimestamp(Timestamp dtTimestamp) {
+	public void setDtTimestamp(String dtTimestamp) {
 		this.dtTimestamp = dtTimestamp;
 	}
 

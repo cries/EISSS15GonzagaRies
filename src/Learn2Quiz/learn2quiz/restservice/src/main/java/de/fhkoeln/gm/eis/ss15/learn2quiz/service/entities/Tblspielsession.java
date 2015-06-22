@@ -15,7 +15,7 @@ import java.util.List;
  * The persistent class for the tblspielsession database table.
  * 
  */
-@UuidGenerator(name="UUID")
+@UuidGenerator(name="sessionUUID")
 @XmlRootElement
 
 @Entity
@@ -24,10 +24,10 @@ public class Tblspielsession implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(generator="UUID")
+	@GeneratedValue(generator="sessionUUID")
 	private String idSpielsession;
 
-	private Timestamp dtTimestamp;
+	private String dtTimestamp;
 
 	//bi-directional many-to-one association to Tblkartenset
 	@ManyToOne
@@ -49,11 +49,11 @@ public class Tblspielsession implements Serializable {
 		this.idSpielsession = idSpielsession;
 	}
 
-	public Timestamp getDtTimestamp() {
+	public String getDtTimestamp() {
 		return this.dtTimestamp;
 	}
 
-	public void setDtTimestamp(Timestamp dtTimestamp) {
+	public void setDtTimestamp(String dtTimestamp) {
 		this.dtTimestamp = dtTimestamp;
 	}
 

@@ -14,7 +14,7 @@ import java.sql.Timestamp;
  * The persistent class for the tblkommentar database table.
  * 
  */
-@UuidGenerator(name="UUID")
+@UuidGenerator(name="commentUUID")
 @XmlRootElement
 
 @Entity
@@ -23,12 +23,12 @@ public class Tblkommentar implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(generator="UUID")
+	@GeneratedValue(generator="commentUUID")
 	private String idKommentar;
 
 	private String dtInhalt;
 
-	private Timestamp dtTimestamp;
+	private String dtTimestamp;
 
 	//bi-directional many-to-one association to Tblkarteikarte
 	@ManyToOne
@@ -59,11 +59,11 @@ public class Tblkommentar implements Serializable {
 		this.dtInhalt = dtInhalt;
 	}
 
-	public Timestamp getDtTimestamp() {
+	public String getDtTimestamp() {
 		return this.dtTimestamp;
 	}
 
-	public void setDtTimestamp(Timestamp dtTimestamp) {
+	public void setDtTimestamp(String dtTimestamp) {
 		this.dtTimestamp = dtTimestamp;
 	}
 
