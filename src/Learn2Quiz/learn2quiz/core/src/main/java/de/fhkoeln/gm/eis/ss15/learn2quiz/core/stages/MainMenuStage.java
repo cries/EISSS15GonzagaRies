@@ -1,5 +1,8 @@
 package de.fhkoeln.gm.eis.ss15.learn2quiz.core.stages;
 
+import java.sql.Timestamp;
+import java.util.Date;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -11,6 +14,8 @@ import com.uwsoft.editor.renderer.script.SimpleButtonScript;
 
 import de.fhkoeln.gm.eis.ss15.learn2quiz.core.Learn2Quiz;
 import de.fhkoeln.gm.eis.ss15.learn2quiz.core.rest.RESTHandler;
+import de.fhkoeln.gm.eis.ss15.learn2quiz.core.rest.entities.Tblgruppe;
+import de.fhkoeln.gm.eis.ss15.learn2quiz.core.rest.entities.Tbluser;
 import de.fhkoeln.gm.eis.ss15.learn2quiz.core.xmpp.XMPPHandler;
 
 public class MainMenuStage extends Stage {
@@ -38,6 +43,7 @@ public class MainMenuStage extends Stage {
             public void clicked (InputEvent event, float x, float y) {
             	//myXMPPHandler.publishItemPayload("testNode2", "elemName", "payloadData");
             	//myGame.showGroups();
+            
             	
             }
         });

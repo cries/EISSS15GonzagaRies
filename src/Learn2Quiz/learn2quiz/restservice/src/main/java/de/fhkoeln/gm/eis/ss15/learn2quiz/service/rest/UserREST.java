@@ -4,6 +4,7 @@ import java.net.URI;
 import java.util.Collection;
  
 
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -23,6 +24,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
+import de.fhkoeln.gm.eis.ss15.learn2quiz.service.entities.Tblgruppe;
 import de.fhkoeln.gm.eis.ss15.learn2quiz.service.entities.Tbluser;
 import de.fhkoeln.gm.eis.ss15.learn2quiz.service.entities.Tbluser;
 
@@ -78,7 +80,14 @@ public class UserREST {
         TypedQuery<Tbluser> query = em.createNamedQuery("Tbluser.findAll", Tbluser.class);
         return query.getResultList();
     }
- 
+    
+    @GET
+    @Path("{id}/groups")
+    public Collection<Tblgruppe> getgroups(@PathParam("id") String id){
+    	Tbluser myUser = em.find(Tbluser.class, id);
+		return myUser.getTblgruppes();
+    }
+    
     @PUT
     @Path("{id}")
     public Response updateuser(Tbluser user, @PathParam("id") String id){
