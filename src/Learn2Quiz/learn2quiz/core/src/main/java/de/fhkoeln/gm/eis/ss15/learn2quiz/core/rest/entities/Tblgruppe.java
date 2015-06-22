@@ -15,7 +15,7 @@ import java.util.List;
  * The persistent class for the tblgruppe database table.
  * 
  */
-@UuidGenerator(name="UUID")
+@UuidGenerator(name="groupUUID")
 @XmlRootElement
 
 @Entity
@@ -24,12 +24,12 @@ public class Tblgruppe implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(generator="UUID")
+	@GeneratedValue(generator="groupUUID")
 	private String idGruppe;
 
 	private String dtBeschreibung;
 
-	private Timestamp dtTimestamp;
+	private String dtTimestamp;
 
 	private String dtTitel;
 
@@ -69,11 +69,11 @@ public class Tblgruppe implements Serializable {
 		this.dtBeschreibung = dtBeschreibung;
 	}
 
-	public Timestamp getDtTimestamp() {
+	public String getDtTimestamp() {
 		return this.dtTimestamp;
 	}
 
-	public void setDtTimestamp(Timestamp dtTimestamp) {
+	public void setDtTimestamp(String dtTimestamp) {
 		this.dtTimestamp = dtTimestamp;
 	}
 

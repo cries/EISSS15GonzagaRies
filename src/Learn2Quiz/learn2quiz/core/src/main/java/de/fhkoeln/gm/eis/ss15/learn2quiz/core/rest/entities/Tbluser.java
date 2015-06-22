@@ -14,15 +14,16 @@ import java.util.List;
  * The persistent class for the tbluser database table.
  * 
  */
-@UuidGenerator(name="UUID")
+@UuidGenerator(name="userUUID")
 @XmlRootElement
+
 @Entity
 @NamedQuery(name="Tbluser.findAll", query="SELECT t FROM Tbluser t")
 public class Tbluser implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(generator="UUID")
+	@GeneratedValue(generator="userUUID")
 	private String idUser;
 
 	private String dtBenutzername;
