@@ -6,6 +6,7 @@ import java.util.Collection;
  
 
 
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -25,6 +26,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
+import de.fhkoeln.gm.eis.ss15.learn2quiz.service.entities.Tblkarteikarte;
 import de.fhkoeln.gm.eis.ss15.learn2quiz.service.entities.Tblkartenset;
 
 
@@ -73,13 +75,20 @@ public class KartenSetREST {
         return Response.ok(kartenset).build();
     }
  
-    //Response.ok() does not accept collections
-    //But we return a collection and JAX-RS will generate header 200 OK and
-    //will handle converting the collection to xml or json as the body
+//    //Response.ok() does not accept collections
+//    //But we return a collection and JAX-RS will generate header 200 OK and
+//    //will handle converting the collection to xml or json as the body
+//    @GET
+//    public Collection<Tblkartenset> getkartensets(){
+//        TypedQuery<Tblkartenset> query = em.createNamedQuery("Tblkartenset.findAll", Tblkartenset.class);
+//        return query.getResultList();
+//    }
+    
     @GET
-    public Collection<Tblkartenset> getkartensets(){
-        TypedQuery<Tblkartenset> query = em.createNamedQuery("Tblkartenset.findAll", Tblkartenset.class);
-        return query.getResultList();
+    @Path("{id}/cards")
+    public Collection<Tblkarteikarte> getkarteikarten(@PathParam("id") String id){
+        Tblkartenset mySet = em.find(Tblkartenset.class, id);
+        return mySet.getTblkarteikartes();
     }
  
     @PUT

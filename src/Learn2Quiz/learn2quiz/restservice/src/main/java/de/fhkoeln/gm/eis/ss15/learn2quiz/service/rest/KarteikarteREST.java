@@ -80,6 +80,8 @@ public class KarteikarteREST {
         TypedQuery<Tblkarteikarte> query = em.createNamedQuery("Tblkarteikarte.findAll", Tblkarteikarte.class);
         return query.getResultList();
     }
+    
+    
  
     @PUT
     @Path("{id}")
