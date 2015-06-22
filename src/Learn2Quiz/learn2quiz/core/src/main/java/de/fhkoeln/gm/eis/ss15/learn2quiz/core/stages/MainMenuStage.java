@@ -10,6 +10,7 @@ import com.uwsoft.editor.renderer.resources.ResourceManager;
 import com.uwsoft.editor.renderer.script.SimpleButtonScript;
 
 import de.fhkoeln.gm.eis.ss15.learn2quiz.core.Learn2Quiz;
+import de.fhkoeln.gm.eis.ss15.learn2quiz.core.rest.RESTHandler;
 import de.fhkoeln.gm.eis.ss15.learn2quiz.core.xmpp.XMPPHandler;
 
 public class MainMenuStage extends Stage {
@@ -21,9 +22,11 @@ public class MainMenuStage extends Stage {
 	private Boolean connected = false;
 	private TextField txtUsername;
 	private TextField txtPassword;
+	private RESTHandler myRESTHandler;
 
 	public MainMenuStage(Learn2Quiz game) {
 		myGame = game;
+		myRESTHandler = myGame.myRESTHandler;
 		myXMPPHandler = myGame.myXMPPHandler;
 		myResourceMgr = myGame.myResourceHandler;
 		mySceneLoader = myGame.mySceneLoader;
@@ -33,8 +36,9 @@ public class MainMenuStage extends Stage {
 		SimpleButtonScript btnGruppen = SimpleButtonScript.selfInit(mySceneLoader.getRoot().getCompositeById("btnGruppen"));
 		btnGruppen.addListener(new ClickListener() {
             public void clicked (InputEvent event, float x, float y) {
-            	myXMPPHandler.publishItemPayload("testNode2", "elemName", "payloadData");
+            	//myXMPPHandler.publishItemPayload("testNode2", "elemName", "payloadData");
             	//myGame.showGroups();
+            	myRESTHandler.getUsers();
             }
         });
         

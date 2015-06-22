@@ -8,6 +8,8 @@ import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.Socket;
 import java.net.URL;
+import java.util.Iterator;
+import java.util.List;
 
 import javax.management.RuntimeErrorException;
 import javax.ws.rs.ClientErrorException;
@@ -17,7 +19,12 @@ import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBElement;
 import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
+import javax.xml.bind.Unmarshaller;
+import javax.xml.namespace.QName;
+import javax.xml.transform.stream.StreamSource;
 
 import org.glassfish.jersey.client.*;
 
@@ -27,6 +34,7 @@ import de.fhkoeln.gm.eis.ss15.learn2quiz.core.rest.entities.Tblkarteikarte;
 import de.fhkoeln.gm.eis.ss15.learn2quiz.core.rest.entities.Tblkartenset;
 import de.fhkoeln.gm.eis.ss15.learn2quiz.core.rest.entities.Tblkommentar;
 import de.fhkoeln.gm.eis.ss15.learn2quiz.core.rest.entities.Tbluser;
+import de.fhkoeln.gm.eis.ss15.learn2quiz.core.rest.entities.ListWrapper;
  
 
 public class RESTHandler {
@@ -43,39 +51,6 @@ public class RESTHandler {
 		this.baseURI = "http://" + this.hostname + ":" + this.port + "/restservice/rest";
 	}
 
-//	public boolean getConnection() {
-//		
-//		ClientConfig config = new ClientConfig(); 
-//		if (this.hostname == null || this.port <= 0)
-//			return false;
-//
-//		this.target = ClientBuilder.newClient(config).target("http://" + this.hostname + ":" + this.port);
-//
-//		sock = null;
-//		try {
-//			sock = new Socket(hostname, port);
-//			return true;
-//		} catch (IOException e) {
-//		} finally {
-//			if (sock != null) {
-//				try {
-//					sock.close();
-//				} catch (IOException e) {
-//				}
-//			}
-//		}
-//
-//		return false;
-//	}
-	
-//	public void closeSocket() {
-//		try {
-//			sock.close();
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//	}
 	
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> USER RESOURCE <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 	
@@ -191,6 +166,33 @@ public class RESTHandler {
 	        throw new RuntimeException(e);
 	    }
 		return myStatusCode;
+	}
+	
+	public List<Tbluser> getUsers(){
+		List<Tbluser> myUsers = null;
+		
+		try {
+			String uri = baseURI + "/user";
+				URL url = new URL(uri);
+				HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+				connection.setRequestMethod("GET");
+				connection.setRequestProperty("Accept", "application/xml");
+			 
+				JAXBContext jc = JAXBContext.newInstance(ListWrapper.class, Tbluser.class);
+				Unmarshaller unmarshaller = jc.createUnmarshaller();
+				InputStream xml = connection.getInputStream();
+
+				// Get object from InputStream
+				if (connection.getResponseCode() == 200)  {
+					myUsers = unmarshalList(unmarshaller, xml);
+				}
+				connection.disconnect();
+				
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+		
+		return myUsers;
 	}
 	
 	
@@ -729,4 +731,31 @@ public class RESTHandler {
 		return myStatusCode;
 	}
 	
+	/**
+	 * Unmarshal a given InputStream (XML) (Collection/list of objects) 
+	 * with a given marshaller. Uses the ListWrapper Class to bind
+	 * elements to its corresponding class and returns a list of objects.
+	 * 
+	 * @param unmarshaller JAXBContext unmarshaller
+	 * @param xmlStream	XML InputStream
+	 * @return List of objects
+	 * @throws JAXBException
+	 */
+	private static <T> List<T> unmarshalList(Unmarshaller unmarshaller, InputStream xmlStream) 
+			throws JAXBException {
+	    StreamSource xml = new StreamSource(xmlStream);
+	    ListWrapper<T> myWrapper = (ListWrapper<T>) unmarshaller.unmarshal(xml, ListWrapper.class).getValue();
+	    return myWrapper.getItems();
+	}
+	
+//	private static void marshal(Marshaller marshaller, List<?> list, String name)
+//            throws JAXBException {
+//        QName qName = new QName(name);
+//        ListWrapper wrapper = new ListWrapper(list);
+//        JAXBElement<ListWrapper> jaxbElement = new JAXBElement<ListWrapper>(qName,
+//                ListWrapper.class, wrapper);
+//        marshaller.marshal(jaxbElement, System.out);
+//    }
+	
 }
+	
