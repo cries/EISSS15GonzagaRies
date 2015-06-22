@@ -216,6 +216,90 @@ public class RESTHandler {
 			return myObj;
 	}
 
+	/**
+	 * Creates a new card from myCard
+	 *
+	 * @param  myCard  The new card object
+	 * @return      HTTPStatusCode (201, 404...)
+	 */
+	public int addKarteikarte(Tblkarteikarte myCard) {
+		int myStatusCode = -1;
+		try { 
+			String uri = baseURI + "/card";
+	        URL url = new URL(uri);
+	        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+	        connection.setDoOutput(true);
+	        connection.setInstanceFollowRedirects(false);
+	        connection.setRequestMethod("POST");
+	        connection.setRequestProperty("Content-Type", "application/xml");
+	        
+	        JAXBContext jc = JAXBContext.newInstance(Tblkarteikarte.class);
+	        OutputStream os = connection.getOutputStream();
+	        
+	        // Write object to OutputStream
+	        jc.createMarshaller().marshal(myCard, os);
+	        os.flush();
+
+	        myStatusCode = connection.getResponseCode();
+	        connection.disconnect();
+	    } catch(Exception e) {
+	        throw new RuntimeException(e);
+	    }
+		return myStatusCode;
+	}
+	
+	/**
+	 * Updates a specific card (cardId in myCard object)
+	 *
+	 * @param  myCard  The updated card object
+	 * @return      HTTPStatusCode (201, 404...)
+	 */
+	public int updateKarteikarte(Tblkarteikarte myCard) {
+		int myStatusCode = -1;
+		try {
+			String uri = baseURI + "/card";
+	        URL url = new URL(uri);
+	        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+	        connection.setDoOutput(true);
+	        connection.setInstanceFollowRedirects(false);
+	        connection.setRequestMethod("PUT");
+	        connection.setRequestProperty("Content-Type", "application/xml");
+	        
+	        JAXBContext jc = JAXBContext.newInstance(Tblkarteikarte.class);
+	        OutputStream os = connection.getOutputStream();
+	        
+	        // Write object to OutputStream
+	        jc.createMarshaller().marshal(myCard, os);
+	        os.flush();
+
+	        myStatusCode = connection.getResponseCode();
+	        connection.disconnect();
+	    } catch(Exception e) {
+	        throw new RuntimeException(e);
+	    }
+		return myStatusCode;
+	}
+	
+	/**
+	 * Deletes a specific card by given cardId
+	 *
+	 * @param  cardId  The cards unique ID
+	 * @return      HTTPStatusCode (201, 404...)
+	 */
+	public int deleteKarteikarte(String cardId) {
+		int myStatusCode = -1;
+		try {
+			String uri = baseURI + "/card/" + cardId;
+	        URL url = new URL(uri);
+	        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+	        connection.setRequestMethod("DELETE");
+	        myStatusCode = connection.getResponseCode();
+	        connection.disconnect();
+	    } catch(Exception e) {
+	        throw new RuntimeException(e);
+	    }
+		return myStatusCode;
+	}
 	
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> KARTENSET RESOURCE <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 	public Tblkartenset getKartenset(String kartensetId) {
@@ -238,7 +322,92 @@ public class RESTHandler {
 			}
 			return myObj;
 	}
+	
+	/**
+	 * Creates a new cardset from myCardset
+	 *
+	 * @param  myCardset  The new cardset object
+	 * @return      HTTPStatusCode (201, 404...)
+	 */
+	public int addKartenset(Tblkartenset myCardset) {
+		int myStatusCode = -1;
+		try { 
+			String uri = baseURI + "/cardset";
+	        URL url = new URL(uri);
+	        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+	        connection.setDoOutput(true);
+	        connection.setInstanceFollowRedirects(false);
+	        connection.setRequestMethod("POST");
+	        connection.setRequestProperty("Content-Type", "application/xml");
+	        
+	        JAXBContext jc = JAXBContext.newInstance(Tblkartenset.class);
+	        OutputStream os = connection.getOutputStream();
+	        
+	        // Write object to OutputStream
+	        jc.createMarshaller().marshal(myCardset, os);
+	        os.flush();
 
+	        myStatusCode = connection.getResponseCode();
+	        connection.disconnect();
+	    } catch(Exception e) {
+	        throw new RuntimeException(e);
+	    }
+		return myStatusCode;
+	}
+	
+	/**
+	 * Updates a specific cardset (cardsetId in myCardset object)
+	 *
+	 * @param  myCardset  The updated cardset object
+	 * @return      HTTPStatusCode (201, 404...)
+	 */
+	public int updateKartenset(Tblkartenset myCardset) {
+		int myStatusCode = -1;
+		try {
+			String uri = baseURI + "/cardset";
+	        URL url = new URL(uri);
+	        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+	        connection.setDoOutput(true);
+	        connection.setInstanceFollowRedirects(false);
+	        connection.setRequestMethod("PUT");
+	        connection.setRequestProperty("Content-Type", "application/xml");
+	        
+	        JAXBContext jc = JAXBContext.newInstance(Tblkartenset.class);
+	        OutputStream os = connection.getOutputStream();
+	        
+	        // Write object to OutputStream
+	        jc.createMarshaller().marshal(myCardset, os);
+	        os.flush();
+
+	        myStatusCode = connection.getResponseCode();
+	        connection.disconnect();
+	    } catch(Exception e) {
+	        throw new RuntimeException(e);
+	    }
+		return myStatusCode;
+	}
+	
+	/**
+	 * Deletes a specific cardset by given cardsetId
+	 *
+	 * @param  cardsetId  The cardsets unique ID
+	 * @return      HTTPStatusCode (201, 404...)
+	 */
+	public int deleteKartenset(String cardsetId) {
+		int myStatusCode = -1;
+		try {
+			String uri = baseURI + "/cardset/" + cardsetId;
+	        URL url = new URL(uri);
+	        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+	        connection.setRequestMethod("DELETE");
+	        myStatusCode = connection.getResponseCode();
+	        connection.disconnect();
+	    } catch(Exception e) {
+	        throw new RuntimeException(e);
+	    }
+		return myStatusCode;
+	}
+	
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> KOMMENTAR RESOURCE <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 	public Tblkommentar getKommentar(String kommentarId) {
 		Tblkommentar myObj = null;
@@ -259,6 +428,91 @@ public class RESTHandler {
 				throw new RuntimeException(e);
 			}
 			return myObj;
+	}
+	
+	/**
+	 * Creates a new comment from myComment
+	 *
+	 * @param  myComment  The new comment object
+	 * @return      HTTPStatusCode (201, 404...)
+	 */
+	public int addKommentar(Tblkommentar myComment) {
+		int myStatusCode = -1;
+		try { 
+			String uri = baseURI + "/comment";
+	        URL url = new URL(uri);
+	        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+	        connection.setDoOutput(true);
+	        connection.setInstanceFollowRedirects(false);
+	        connection.setRequestMethod("POST");
+	        connection.setRequestProperty("Content-Type", "application/xml");
+	        
+	        JAXBContext jc = JAXBContext.newInstance(Tblkommentar.class);
+	        OutputStream os = connection.getOutputStream();
+	        
+	        // Write object to OutputStream
+	        jc.createMarshaller().marshal(myComment, os);
+	        os.flush();
+
+	        myStatusCode = connection.getResponseCode();
+	        connection.disconnect();
+	    } catch(Exception e) {
+	        throw new RuntimeException(e);
+	    }
+		return myStatusCode;
+	}
+	
+	/**
+	 * Updates a specific comment (commentId in myComment object)
+	 *
+	 * @param  myComment  The updated comment object
+	 * @return      HTTPStatusCode (201, 404...)
+	 */
+	public int updateKommentar(Tblkommentar myComment) {
+		int myStatusCode = -1;
+		try {
+			String uri = baseURI + "/comment";
+	        URL url = new URL(uri);
+	        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+	        connection.setDoOutput(true);
+	        connection.setInstanceFollowRedirects(false);
+	        connection.setRequestMethod("PUT");
+	        connection.setRequestProperty("Content-Type", "application/xml");
+	        
+	        JAXBContext jc = JAXBContext.newInstance(Tblkommentar.class);
+	        OutputStream os = connection.getOutputStream();
+	        
+	        // Write object to OutputStream
+	        jc.createMarshaller().marshal(myComment, os);
+	        os.flush();
+
+	        myStatusCode = connection.getResponseCode();
+	        connection.disconnect();
+	    } catch(Exception e) {
+	        throw new RuntimeException(e);
+	    }
+		return myStatusCode;
+	}
+	
+	/**
+	 * Deletes a specific comment by given commentId
+	 *
+	 * @param  commentId  The comments unique ID
+	 * @return      HTTPStatusCode (201, 404...)
+	 */
+	public int deleteKommentar(String commentId) {
+		int myStatusCode = -1;
+		try {
+			String uri = baseURI + "/comment/" + commentId;
+	        URL url = new URL(uri);
+	        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+	        connection.setRequestMethod("DELETE");
+	        myStatusCode = connection.getResponseCode();
+	        connection.disconnect();
+	    } catch(Exception e) {
+	        throw new RuntimeException(e);
+	    }
+		return myStatusCode;
 	}
 	
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> GRUPPE RESOURCE <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
@@ -283,6 +537,91 @@ public class RESTHandler {
 			return myObj;
 	}
 
+	/**
+	 * Creates a new group from myGroup
+	 *
+	 * @param  myGroup  The new group object
+	 * @return      HTTPStatusCode (201, 404...)
+	 */
+	public int addGruppe(Tblgruppe myGroup) {
+		int myStatusCode = -1;
+		try { 
+			String uri = baseURI + "/group";
+	        URL url = new URL(uri);
+	        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+	        connection.setDoOutput(true);
+	        connection.setInstanceFollowRedirects(false);
+	        connection.setRequestMethod("POST");
+	        connection.setRequestProperty("Content-Type", "application/xml");
+	        
+	        JAXBContext jc = JAXBContext.newInstance(Tblgruppe.class);
+	        OutputStream os = connection.getOutputStream();
+	        
+	        // Write object to OutputStream
+	        jc.createMarshaller().marshal(myGroup, os);
+	        os.flush();
+
+	        myStatusCode = connection.getResponseCode();
+	        connection.disconnect();
+	    } catch(Exception e) {
+	        throw new RuntimeException(e);
+	    }
+		return myStatusCode;
+	}
+	
+	/**
+	 * Updates a specific group (groupId in myGroup object)
+	 *
+	 * @param  myGroup  The updated group object
+	 * @return      HTTPStatusCode (201, 404...)
+	 */
+	public int updateGruppe(Tblgruppe myGroup) {
+		int myStatusCode = -1;
+		try {
+			String uri = baseURI + "/group";
+	        URL url = new URL(uri);
+	        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+	        connection.setDoOutput(true);
+	        connection.setInstanceFollowRedirects(false);
+	        connection.setRequestMethod("PUT");
+	        connection.setRequestProperty("Content-Type", "application/xml");
+	        
+	        JAXBContext jc = JAXBContext.newInstance(Tblgruppe.class);
+	        OutputStream os = connection.getOutputStream();
+	        
+	        // Write object to OutputStream
+	        jc.createMarshaller().marshal(myGroup, os);
+	        os.flush();
+
+	        myStatusCode = connection.getResponseCode();
+	        connection.disconnect();
+	    } catch(Exception e) {
+	        throw new RuntimeException(e);
+	    }
+		return myStatusCode;
+	}
+	
+	/**
+	 * Deletes a specific group by given groupId
+	 *
+	 * @param  groupId  The groups unique ID
+	 * @return      HTTPStatusCode (201, 404...)
+	 */
+	public int deleteGruppe(String groupId) {
+		int myStatusCode = -1;
+		try {
+			String uri = baseURI + "/group/" + groupId;
+	        URL url = new URL(uri);
+	        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+	        connection.setRequestMethod("DELETE");
+	        myStatusCode = connection.getResponseCode();
+	        connection.disconnect();
+	    } catch(Exception e) {
+	        throw new RuntimeException(e);
+	    }
+		return myStatusCode;
+	}
+	
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> EINLADUNG RESOURCE <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 	public Tbleinladung getEinladung(String einladungId) {
 		Tbleinladung myObj = null;
@@ -303,6 +642,91 @@ public class RESTHandler {
 				throw new RuntimeException(e);
 			}
 			return myObj;
+	}
+	
+	/**
+	 * Creates a new invite from myInvite
+	 *
+	 * @param  myInvite  The new invite object
+	 * @return      HTTPStatusCode (201, 404...)
+	 */
+	public int addEinladung(Tbleinladung myInvite) {
+		int myStatusCode = -1;
+		try { 
+			String uri = baseURI + "/invite";
+	        URL url = new URL(uri);
+	        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+	        connection.setDoOutput(true);
+	        connection.setInstanceFollowRedirects(false);
+	        connection.setRequestMethod("POST");
+	        connection.setRequestProperty("Content-Type", "application/xml");
+	        
+	        JAXBContext jc = JAXBContext.newInstance(Tbleinladung.class);
+	        OutputStream os = connection.getOutputStream();
+	        
+	        // Write object to OutputStream
+	        jc.createMarshaller().marshal(myInvite, os);
+	        os.flush();
+
+	        myStatusCode = connection.getResponseCode();
+	        connection.disconnect();
+	    } catch(Exception e) {
+	        throw new RuntimeException(e);
+	    }
+		return myStatusCode;
+	}
+	
+	/**
+	 * Updates a specific invite (inviteId in myInvite object)
+	 *
+	 * @param  myInvite  The updated invite object
+	 * @return      HTTPStatusCode (201, 404...)
+	 */
+	public int updateEinladung(Tbleinladung myInvite) {
+		int myStatusCode = -1;
+		try {
+			String uri = baseURI + "/invite";
+	        URL url = new URL(uri);
+	        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+	        connection.setDoOutput(true);
+	        connection.setInstanceFollowRedirects(false);
+	        connection.setRequestMethod("PUT");
+	        connection.setRequestProperty("Content-Type", "application/xml");
+	        
+	        JAXBContext jc = JAXBContext.newInstance(Tbleinladung.class);
+	        OutputStream os = connection.getOutputStream();
+	        
+	        // Write object to OutputStream
+	        jc.createMarshaller().marshal(myInvite, os);
+	        os.flush();
+
+	        myStatusCode = connection.getResponseCode();
+	        connection.disconnect();
+	    } catch(Exception e) {
+	        throw new RuntimeException(e);
+	    }
+		return myStatusCode;
+	}
+	
+	/**
+	 * Deletes a specific invite by given inviteId
+	 *
+	 * @param  inviteId  The invites unique ID
+	 * @return      HTTPStatusCode (201, 404...)
+	 */
+	public int deleteEinladung(String inviteId) {
+		int myStatusCode = -1;
+		try {
+			String uri = baseURI + "/invite/" + inviteId;
+	        URL url = new URL(uri);
+	        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+	        connection.setRequestMethod("DELETE");
+	        myStatusCode = connection.getResponseCode();
+	        connection.disconnect();
+	    } catch(Exception e) {
+	        throw new RuntimeException(e);
+	    }
+		return myStatusCode;
 	}
 	
 }
