@@ -5,6 +5,11 @@ import java.util.Collection;
  
 
 
+
+
+
+
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -26,7 +31,7 @@ import javax.ws.rs.core.UriInfo;
 
 import de.fhkoeln.gm.eis.ss15.learn2quiz.service.entities.Tblgruppe;
 import de.fhkoeln.gm.eis.ss15.learn2quiz.service.entities.Tbluser;
-import de.fhkoeln.gm.eis.ss15.learn2quiz.service.entities.Tbluser;
+
 
 @Path("/user")
 @Produces ({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
@@ -81,12 +86,23 @@ public class UserREST {
         return query.getResultList();
     }
     
-    @GET
-    @Path("{id}/groups")
-    public Collection<Tblgruppe> getgroups(@PathParam("id") String id){
-    	Tbluser myUser = em.find(Tbluser.class, id);
-		return myUser.getTblgruppes();
-    }
+//    @GET
+//    @Path("{id}/groups")
+//    public Collection<Tblgruppe> getgroups(@PathParam("id") String id){
+//    	//TypedQuery<Tbluser> query = em.createNamedQuery("Tbluser.findGroups", Tbluser.class).setParameter("userid", id);
+//    	Tbluser myUser = em.find(Tbluser.class, id);
+//    	System.out.println(myUser.toString());
+//		//return query.getResultList();
+//    	return myUser.getTblgruppes();
+//    }
+    
+    
+	@GET
+	@Path("{id}/groups")
+	public String getgroups(@PathParam("id") String id) {
+		
+		return "";
+	}
     
     @PUT
     @Path("{id}")

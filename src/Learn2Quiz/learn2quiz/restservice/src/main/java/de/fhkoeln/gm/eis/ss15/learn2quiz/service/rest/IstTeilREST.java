@@ -3,6 +3,10 @@ package de.fhkoeln.gm.eis.ss15.learn2quiz.service.rest;
 import java.net.URI;
 import java.util.Collection;
  
+
+
+
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -22,7 +26,8 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
-import de.fhkoeln.gm.eis.ss15.learn2quiz.service.entities.Tblistteil;
+import de.fhkoeln.gm.eis.ss15.learn2quiz.service.entities.TblistTeil;
+
 
 @Path("/istteil")
 @Produces ({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
@@ -42,7 +47,7 @@ public class IstTeilREST {
     private UriInfo uriInfo;
  
     @POST
-    public Response createistteil(Tblistteil istteil){
+    public Response createistteil(TblistTeil istteil){
         if(istteil == null){
             throw new BadRequestException();
         }
@@ -59,7 +64,7 @@ public class IstTeilREST {
     @GET
     @Path("{id}")
     public Response getistteil(@PathParam("id") String id){
-        Tblistteil istteil = em.find(Tblistteil.class, id);
+        TblistTeil istteil = em.find(TblistTeil.class, id);
  
         if(istteil == null){
             throw new NotFoundException();
@@ -72,14 +77,14 @@ public class IstTeilREST {
     //But we return a collection and JAX-RS will generate header 200 OK and
     //will handle converting the collection to xml or json as the body
     @GET
-    public Collection<Tblistteil> getistteils(){
-        TypedQuery<Tblistteil> query = em.createNamedQuery("istteil.findAll", Tblistteil.class);
+    public Collection<TblistTeil> getistteils(){
+        TypedQuery<TblistTeil> query = em.createNamedQuery("istteil.findAll", TblistTeil.class);
         return query.getResultList();
     }
  
     @PUT
     @Path("{id}")
-    public Response updateistteil(Tblistteil istteil, @PathParam("id") String id){
+    public Response updateistteil(TblistTeil istteil, @PathParam("id") String id){
         if(id == null){
             throw new BadRequestException();
         }
@@ -95,7 +100,7 @@ public class IstTeilREST {
     @DELETE
     @Path("{id}")
     public Response deleteistteil(@PathParam("id") String id){
-        Tblistteil istteil = em.find(Tblistteil.class, id);
+        TblistTeil istteil = em.find(TblistTeil.class, id);
         if(istteil == null){
             throw new NotFoundException();
         }

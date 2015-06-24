@@ -6,8 +6,6 @@ import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 
 
-import java.sql.Timestamp;
-
 
 /**
  * The persistent class for the tblistteil database table.
@@ -15,14 +13,14 @@ import java.sql.Timestamp;
  */
 @XmlRootElement
 @Entity
-@NamedQuery(name="Tblistteil.findAll", query="SELECT t FROM Tblistteil t")
-public class Tblistteil implements Serializable {
+@NamedQuery(name="TblistTeil.findAll", query="SELECT t FROM TblistTeil t")
+public class TblistTeil implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@EmbeddedId
-	private TblistteilPK id;
+	private TblistTeilPK id;
 
-	private Timestamp dtTimestamp;
+	private String dtTimestamp;
 
 	//bi-directional many-to-one association to Tblgruppe
 	@ManyToOne
@@ -34,22 +32,22 @@ public class Tblistteil implements Serializable {
 	@JoinColumn(name="fiUser")
 	private Tbluser tbluser;
 
-	public Tblistteil() {
+	public TblistTeil() {
 	}
 
-	public TblistteilPK getId() {
+	public TblistTeilPK getId() {
 		return this.id;
 	}
 
-	public void setId(TblistteilPK id) {
+	public void setId(TblistTeilPK id) {
 		this.id = id;
 	}
 
-	public Timestamp getDtTimestamp() {
+	public String getDtTimestamp() {
 		return this.dtTimestamp;
 	}
 
-	public void setDtTimestamp(Timestamp dtTimestamp) {
+	public void setDtTimestamp(String dtTimestamp) {
 		this.dtTimestamp = dtTimestamp;
 	}
 

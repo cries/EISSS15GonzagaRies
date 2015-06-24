@@ -7,7 +7,6 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 import org.eclipse.persistence.annotations.UuidGenerator;
 
-import java.sql.Timestamp;
 import java.util.List;
 
 

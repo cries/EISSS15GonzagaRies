@@ -3,6 +3,10 @@ package de.fhkoeln.gm.eis.ss15.learn2quiz.service.rest;
 import java.net.URI;
 import java.util.Collection;
  
+
+
+
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -24,6 +28,7 @@ import javax.ws.rs.core.UriInfo;
 
 import de.fhkoeln.gm.eis.ss15.learn2quiz.service.entities.Tbleinladung;
 
+
 @Path("/invite")
 @Produces ({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
 @Consumes ({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
@@ -42,7 +47,7 @@ public class EinladungREST {
     private UriInfo uriInfo;
  
     @POST
-    public Response createeinladung(Tbleinladung einladung){
+    public Response createeinladung(de.fhkoeln.gm.eis.ss15.learn2quiz.service.entities.Tbleinladung einladung){
         if(einladung == null){
             throw new BadRequestException();
         }

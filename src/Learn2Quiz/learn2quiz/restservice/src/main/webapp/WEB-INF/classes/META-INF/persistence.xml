@@ -9,14 +9,15 @@
         <class>de.fhkoeln.gm.eis.ss15.learn2quiz.service.entities.Tblerhaelt</class>
         <class>de.fhkoeln.gm.eis.ss15.learn2quiz.service.entities.TblerhaeltPK</class>
         <class>de.fhkoeln.gm.eis.ss15.learn2quiz.service.entities.Tblgruppe</class>
-        <class>de.fhkoeln.gm.eis.ss15.learn2quiz.service.entities.Tblistteil</class>
-        <class>de.fhkoeln.gm.eis.ss15.learn2quiz.service.entities.TblistteilPK</class>
+        <class>de.fhkoeln.gm.eis.ss15.learn2quiz.service.entities.TblistTeil</class>
+        <class>de.fhkoeln.gm.eis.ss15.learn2quiz.service.entities.TblistTeilPK</class>
         <class>de.fhkoeln.gm.eis.ss15.learn2quiz.service.entities.Tblkarteikarte</class>
         <class>de.fhkoeln.gm.eis.ss15.learn2quiz.service.entities.Tblkartenset</class>
         <class>de.fhkoeln.gm.eis.ss15.learn2quiz.service.entities.Tblkommentar</class>
         <class>de.fhkoeln.gm.eis.ss15.learn2quiz.service.entities.Tblspielsession</class>
         <class>de.fhkoeln.gm.eis.ss15.learn2quiz.service.entities.Tblspielt</class>
         <class>de.fhkoeln.gm.eis.ss15.learn2quiz.service.entities.TblspieltPK</class>
-        <class>de.fhkoeln.gm.eis.ss15.learn2quiz.service.entities.Tbluser</class>
+        <class>de.fhkoeln.gm.eis.ss15.learn2quiz.service.entities.Tbluser</class>   
+        <shared-cache-mode>NONE</shared-cache-mode>
     </persistence-unit>
 </persistence>

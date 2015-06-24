@@ -42,7 +42,7 @@ public class MainMenuStage extends Stage {
 		btnGruppen.addListener(new ClickListener() {
             public void clicked (InputEvent event, float x, float y) {
             	//myXMPPHandler.publishItemPayload("testNode2", "elemName", "payloadData");
-            	//myGame.showGroups();
+            	myGame.showGroups();
             
             	
             }
@@ -52,6 +52,8 @@ public class MainMenuStage extends Stage {
         btnSpielen.addListener(new ClickListener() {
             public void clicked (InputEvent event, float x, float y) {
             	//myGame.startGame();
+            	System.out.println("Username: " + myRESTHandler.getUser("180E3E0E-3F10-4803-86B8-20C23B3E5903").getDtBenutzername());
+            	
             }
         });
         

@@ -7,8 +7,6 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 import org.eclipse.persistence.annotations.UuidGenerator;
 
-import java.sql.Timestamp;
-
 
 /**
  * The persistent class for the tblkommentar database table.

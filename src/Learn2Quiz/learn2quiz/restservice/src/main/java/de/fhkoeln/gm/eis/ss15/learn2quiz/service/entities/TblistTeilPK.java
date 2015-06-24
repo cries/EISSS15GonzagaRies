@@ -8,7 +8,7 @@ import javax.persistence.*;
  * 
  */
 @Embeddable
-public class TblistteilPK implements Serializable {
+public class TblistTeilPK implements Serializable {
 	//default serial version id, required for serializable classes.
 	private static final long serialVersionUID = 1L;
 
@@ -18,7 +18,7 @@ public class TblistteilPK implements Serializable {
 	@Column(insertable=false, updatable=false)
 	private String fiGruppe;
 
-	public TblistteilPK() {
+	public TblistTeilPK() {
 	}
 	public String getFiUser() {
 		return this.fiUser;
@@ -37,10 +37,10 @@ public class TblistteilPK implements Serializable {
 		if (this == other) {
 			return true;
 		}
-		if (!(other instanceof TblistteilPK)) {
+		if (!(other instanceof TblistTeilPK)) {
 			return false;
 		}
-		TblistteilPK castOther = (TblistteilPK)other;
+		TblistTeilPK castOther = (TblistTeilPK)other;
 		return 
 			this.fiUser.equals(castOther.fiUser)
 			&& this.fiGruppe.equals(castOther.fiGruppe);

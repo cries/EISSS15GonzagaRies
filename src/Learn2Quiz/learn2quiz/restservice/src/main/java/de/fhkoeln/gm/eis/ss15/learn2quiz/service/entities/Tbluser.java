@@ -16,9 +16,11 @@ import java.util.List;
  */
 @UuidGenerator(name="userUUID")
 @XmlRootElement
-
 @Entity
-@NamedQuery(name="Tbluser.findAll", query="SELECT t FROM Tbluser t")
+@NamedQueries({
+	@NamedQuery(name="Tbluser.findAll", query="SELECT t FROM Tbluser t"), 
+	@NamedQuery(name="Tbluser.findGroups", query="SELECT DISTINCT g FROM Tblgruppe g WHERE g.tbluser = :userid")
+})
 public class Tbluser implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -43,12 +45,12 @@ public class Tbluser implements Serializable {
 	private List<Tblerhaelt> tblerhaelts;
 
 	//bi-directional many-to-one association to Tblgruppe
-	@OneToMany(mappedBy="tbluser")
+	@OneToMany(mappedBy="tbluser", cascade = CascadeType.PERSIST) //
 	private List<Tblgruppe> tblgruppes;
 
 	//bi-directional many-to-one association to TblistTeil
 	@OneToMany(mappedBy="tbluser")
-	private List<Tblistteil> tblistteils;
+	private List<TblistTeil> tblistteils;
 
 	//bi-directional many-to-one association to Tblkarteikarte
 	@OneToMany(mappedBy="tbluser")
@@ -175,22 +177,22 @@ public class Tbluser implements Serializable {
 		return tblgruppe;
 	}
 
-	public List<Tblistteil> getTblistteils() {
+	public List<TblistTeil> getTblistteils() {
 		return this.tblistteils;
 	}
 
-	public void setTblistteils(List<Tblistteil> tblistteils) {
+	public void setTblistteils(List<TblistTeil> tblistteils) {
 		this.tblistteils = tblistteils;
 	}
 
-	public Tblistteil addTblistteil(Tblistteil tblistteil) {
+	public TblistTeil addTblistteil(TblistTeil tblistteil) {
 		getTblistteils().add(tblistteil);
 		tblistteil.setTbluser(this);
 
 		return tblistteil;
 	}
 
-	public Tblistteil removeTblistteil(Tblistteil tblistteil) {
+	public TblistTeil removeTblistteil(TblistTeil tblistteil) {
 		getTblistteils().remove(tblistteil);
 		tblistteil.setTbluser(null);
 

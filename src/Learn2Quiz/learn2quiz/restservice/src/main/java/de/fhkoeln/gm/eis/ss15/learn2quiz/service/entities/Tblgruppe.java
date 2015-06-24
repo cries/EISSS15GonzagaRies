@@ -7,7 +7,6 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 import org.eclipse.persistence.annotations.UuidGenerator;
 
-import java.sql.Timestamp;
 import java.util.List;
 
 
@@ -17,7 +16,6 @@ import java.util.List;
  */
 @UuidGenerator(name="groupUUID")
 @XmlRootElement
-
 @Entity
 @NamedQuery(name="Tblgruppe.findAll", query="SELECT t FROM Tblgruppe t")
 public class Tblgruppe implements Serializable {
@@ -44,7 +42,7 @@ public class Tblgruppe implements Serializable {
 
 	//bi-directional many-to-one association to TblistTeil
 	@OneToMany(mappedBy="tblgruppe")
-	private List<Tblistteil> tblistteils;
+	private List<TblistTeil> tblistteils;
 
 	//bi-directional many-to-one association to Tblkartenset
 	@OneToMany(mappedBy="tblgruppe")
@@ -115,22 +113,22 @@ public class Tblgruppe implements Serializable {
 		this.tbluser = tbluser;
 	}
 
-	public List<Tblistteil> getTblistteils() {
+	public List<TblistTeil> getTblistteils() {
 		return this.tblistteils;
 	}
 
-	public void setTblistteils(List<Tblistteil> tblistteils) {
+	public void setTblistteils(List<TblistTeil> tblistteils) {
 		this.tblistteils = tblistteils;
 	}
 
-	public Tblistteil addTblistteil(Tblistteil tblistteil) {
+	public TblistTeil addTblistteil(TblistTeil tblistteil) {
 		getTblistteils().add(tblistteil);
 		tblistteil.setTblgruppe(this);
 
 		return tblistteil;
 	}
 
-	public Tblistteil removeTblistteil(Tblistteil tblistteil) {
+	public TblistTeil removeTblistteil(TblistTeil tblistteil) {
 		getTblistteils().remove(tblistteil);
 		tblistteil.setTblgruppe(null);
 

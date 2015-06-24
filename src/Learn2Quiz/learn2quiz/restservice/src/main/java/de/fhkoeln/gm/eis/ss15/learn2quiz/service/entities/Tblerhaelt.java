@@ -6,8 +6,6 @@ import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 
 
-import java.sql.Timestamp;
-
 
 /**
  * The persistent class for the tblerhaelt database table.
@@ -22,7 +20,7 @@ public class Tblerhaelt implements Serializable {
 	@EmbeddedId
 	private TblerhaeltPK id;
 
-	private Timestamp dtTimestamp;
+	private String dtTimestamp;
 
 	//bi-directional many-to-one association to Tbleinladung
 	@ManyToOne
@@ -45,11 +43,11 @@ public class Tblerhaelt implements Serializable {
 		this.id = id;
 	}
 
-	public Timestamp getDtTimestamp() {
+	public String getDtTimestamp() {
 		return this.dtTimestamp;
 	}
 
-	public void setDtTimestamp(Timestamp dtTimestamp) {
+	public void setDtTimestamp(String dtTimestamp) {
 		this.dtTimestamp = dtTimestamp;
 	}
 

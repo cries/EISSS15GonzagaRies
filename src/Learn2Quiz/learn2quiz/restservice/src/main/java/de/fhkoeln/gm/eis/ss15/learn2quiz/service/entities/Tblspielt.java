@@ -5,13 +5,14 @@ import java.io.Serializable;
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 
-import java.sql.Timestamp;
+import org.eclipse.persistence.annotations.UuidGenerator;
 
 
 /**
  * The persistent class for the tblspielt database table.
  * 
  */
+
 @XmlRootElement
 @Entity
 @NamedQuery(name="Tblspielt.findAll", query="SELECT t FROM Tblspielt t")
@@ -23,7 +24,7 @@ public class Tblspielt implements Serializable {
 
 	private String dtPunkte;
 
-	private Timestamp dtTimestamp;
+	private String dtTimestamp;
 
 	//bi-directional many-to-one association to Tblspielsession
 	@ManyToOne
@@ -54,11 +55,11 @@ public class Tblspielt implements Serializable {
 		this.dtPunkte = dtPunkte;
 	}
 
-	public Timestamp getDtTimestamp() {
+	public String getDtTimestamp() {
 		return this.dtTimestamp;
 	}
 
-	public void setDtTimestamp(Timestamp dtTimestamp) {
+	public void setDtTimestamp(String dtTimestamp) {
 		this.dtTimestamp = dtTimestamp;
 	}
 

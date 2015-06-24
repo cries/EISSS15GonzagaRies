@@ -7,7 +7,6 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 import org.eclipse.persistence.annotations.UuidGenerator;
 
-import java.sql.Timestamp;
 import java.util.List;
 
 
@@ -17,7 +16,6 @@ import java.util.List;
  */
 @UuidGenerator(name="inviteUUID")
 @XmlRootElement
-
 @Entity
 @NamedQuery(name="Tbleinladung.findAll", query="SELECT t FROM Tbleinladung t")
 public class Tbleinladung implements Serializable {

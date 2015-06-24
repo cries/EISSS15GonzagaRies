@@ -6,6 +6,11 @@ import java.util.Collection;
 
 
 
+
+
+
+
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -26,8 +31,8 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
 import de.fhkoeln.gm.eis.ss15.learn2quiz.service.entities.Tblerhaelt;
-import de.fhkoeln.gm.eis.ss15.learn2quiz.service.entities.Tblerhaelt;
 import de.fhkoeln.gm.eis.ss15.learn2quiz.service.entities.TblerhaeltPK;
+
 
 @Path("/erhaelt")
 @Produces ({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
