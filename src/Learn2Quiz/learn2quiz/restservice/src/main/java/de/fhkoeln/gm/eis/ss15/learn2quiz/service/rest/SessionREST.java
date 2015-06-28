@@ -18,6 +18,9 @@ import java.util.List;
 
 
 
+
+
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -33,16 +36,14 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
+import javax.ws.rs.ServerErrorException;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
-import de.fhkoeln.gm.eis.ss15.learn2quiz.service.XMPPHandler;
-import de.fhkoeln.gm.eis.ss15.learn2quiz.service.entities.TblistTeil;
+import de.fhkoeln.gm.eis.ss15.learn2quiz.logic.GameHandler;
 import de.fhkoeln.gm.eis.ss15.learn2quiz.service.entities.Tblspielsession;
-import de.fhkoeln.gm.eis.ss15.learn2quiz.service.entities.Tbluser;
-import de.fhkoeln.gm.eis.ss15.learn2quiz.service.rest.IstTeilREST;
 
 
 @Path("/session")
@@ -50,15 +51,9 @@ import de.fhkoeln.gm.eis.ss15.learn2quiz.service.rest.IstTeilREST;
 @Consumes ({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
 @Stateless
 public class SessionREST {
-	//the PersistenceContext annotation is a shortcut that hides the fact
-    //that, an entity manager is always obtained from an EntityManagerFactory.
-    //The peristitence.xml file defines persistence units which is supplied by name
-    //to the EntityManagerFactory, thus  dictating settings and classes used by the
-    //entity manager
     @PersistenceContext(unitName = "learn2quizPU")
     private EntityManager em;
  
-    //Inject UriInfo to build the uri used in the POST response
     @Context
     private UriInfo uriInfo;
  
@@ -69,11 +64,8 @@ public class SessionREST {
         }
         em.persist(spielsession);
  
-        //Build a uri with the spielsession id appended to the absolute path
-        //This is so the client gets the spielsession id and also has the path to the resource created
         URI spielsessionUri = uriInfo.getAbsolutePathBuilder().path(spielsession.getIdSpielsession()).build();
  
-        //The created response will not have a body. The spielsessionUri will be in the Header
         return Response.created(spielsessionUri).build();
     }
  
@@ -88,10 +80,7 @@ public class SessionREST {
  
         return Response.ok(spielsession).build();
     }
- 
-    //Response.ok() does not accept collections
-    //But we return a collection and JAX-RS will generate header 200 OK and
-    //will handle converting the collection to xml or json as the body
+
     @GET
     public Collection<Tblspielsession> getspielsessions(){
         TypedQuery<Tblspielsession> query = em.createNamedQuery("Tblspielsession.findAll", Tblspielsession.class);
@@ -104,8 +93,7 @@ public class SessionREST {
         if(id == null){
             throw new BadRequestException();
         }
- 
-        //Ideally we should check the id is a valid UUID. Not implementing for now
+
         spielsession.setIdSpielsession(id);
         em.merge(spielsession);
  
@@ -124,50 +112,22 @@ public class SessionREST {
     }
 	
 	
-	
+    
     @POST
     @Path("/start")
+    // Start a new game session 
     public Response startSession(@QueryParam("init") String idUser, 
-    		@QueryParam("grpId") String idGroup, 
-    		@QueryParam("setId") String idSet){
+    		@QueryParam("grpid") String idGroup, 
+    		@QueryParam("setid") String idCardset){
+
+    	GameHandler myGameHandler = new GameHandler();
+    	String mySessionId = myGameHandler.newSession(idUser, idGroup, idCardset);
+    	if (mySessionId == null)
+    		throw new ServerErrorException(500, new NullPointerException());
     	
-        int initRanking;
-        final double rankingFactor = 0.33;
-        List<Tbluser> myPlayers;
-        XMPPHandler xmppHandler = new XMPPHandler();
-    	
-    	Tbluser initiator = em.find(Tbluser.class, idUser);
-    	initRanking = initiator.getDtPunktzahl();
-    	// Get all users from the group
-    	Collection<TblistTeil> groupUsers = getUserByGroup(idGroup);
-    	Iterator<TblistTeil> it = groupUsers.iterator();
-    	while (it.hasNext()) {
-    		TblistTeil row = it.next();
-    		int playerRanking = row.getTbluser().getDtPunktzahl();
-			if(((playerRanking) >= (initRanking-(initRanking*rankingFactor)))
-				&& (playerRanking <= (initRanking+(initRanking*rankingFactor)))) 
-			{
-				// User fits into ranking
-				myPlayers.add(row.getTbluser());
-			}
-    	}
-    	
-    	xmppHandler.
-    	
-    	
- 
-        //Build a uri with the spielsession id appended to the absolute path
-        //This is so the client gets the spielsession id and also has the path to the resource created
-        //URI spielsessionUri = uriInfo.getAbsolutePathBuilder().path().build();
- 
-        //The created response will not have a body. The spielsessionUri will be in the Header
+        URI spielsessionUri = uriInfo.getAbsolutePathBuilder().path(mySessionId).build();
         return Response.created(spielsessionUri).build();
     }
 	
-  //--------------Helper Classes
-
-    public Collection<TblistTeil> getUserByGroup(String idGroup){
-        TypedQuery<TblistTeil> query = em.createNamedQuery("istteil.findUsersByGroup", TblistTeil.class);
-        return query.getResultList();
-    }
+  
 }

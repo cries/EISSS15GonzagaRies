@@ -34,15 +34,9 @@ import de.fhkoeln.gm.eis.ss15.learn2quiz.service.entities.Tbleinladung;
 @Consumes ({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
 @Stateless
 public class EinladungREST {
-	//the PersistenceContext annotation is a shortcut that hides the fact
-    //that, an entity manager is always obtained from an EntityManagerFactory.
-    //The peristitence.xml file defines persistence units which is supplied by name
-    //to the EntityManagerFactory, thus  dictating settings and classes used by the
-    //entity manager
     @PersistenceContext(unitName = "learn2quizPU")
     private EntityManager em;
  
-    //Inject UriInfo to build the uri used in the POST response
     @Context
     private UriInfo uriInfo;
  
@@ -53,11 +47,8 @@ public class EinladungREST {
         }
         em.persist(einladung);
  
-        //Build a uri with the einladung id appended to the absolute path
-        //This is so the client gets the einladung id and also has the path to the resource created
         URI einladungUri = uriInfo.getAbsolutePathBuilder().path(einladung.getIdEinladung()).build();
  
-        //The created response will not have a body. The einladungUri will be in the Header
         return Response.created(einladungUri).build();
     }
  
@@ -72,10 +63,7 @@ public class EinladungREST {
  
         return Response.ok(einladung).build();
     }
- 
-    //Response.ok() does not accept collections
-    //But we return a collection and JAX-RS will generate header 200 OK and
-    //will handle converting the collection to xml or json as the body
+
     @GET
     public Collection<Tbleinladung> geteinladungs(){
         TypedQuery<Tbleinladung> query = em.createNamedQuery("einladung.findAll", Tbleinladung.class);
@@ -88,9 +76,8 @@ public class EinladungREST {
         if(id == null){
             throw new BadRequestException();
         }
- 
-        //Ideally we should check the id is a valid UUID. Not implementing for now
-        einladung.setIdEinladung(id);;
+
+        einladung.setIdEinladung(id);
         em.merge(einladung);
  
         return Response.ok().build();

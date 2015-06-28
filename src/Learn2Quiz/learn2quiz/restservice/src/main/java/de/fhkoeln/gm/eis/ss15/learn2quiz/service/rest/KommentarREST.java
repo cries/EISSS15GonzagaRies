@@ -9,6 +9,7 @@ import java.util.Collection;
 
 
 
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -27,6 +28,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
+import de.fhkoeln.gm.eis.ss15.learn2quiz.logic.GameHandler;
 import de.fhkoeln.gm.eis.ss15.learn2quiz.service.entities.Tblkommentar;
 
 
@@ -43,6 +45,7 @@ public class KommentarREST {
     //entity manager
     @PersistenceContext(unitName = "learn2quizPU")
     private EntityManager em;
+    private GameHandler gameHandler = new GameHandler();
  
     //Inject UriInfo to build the uri used in the POST response
     @Context
@@ -54,6 +57,7 @@ public class KommentarREST {
             throw new BadRequestException();
         }
         em.persist(kommentar);
+        	
  
         //Build a uri with the kommentar id appended to the absolute path
         //This is so the client gets the kommentar id and also has the path to the resource created
