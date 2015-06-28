@@ -43,8 +43,6 @@ public class MainMenuStage extends Stage {
             public void clicked (InputEvent event, float x, float y) {
             	//myXMPPHandler.publishItemPayload("testNode2", "elemName", "payloadData");
             	myGame.showGroups();
-            
-            	
             }
         });
         
