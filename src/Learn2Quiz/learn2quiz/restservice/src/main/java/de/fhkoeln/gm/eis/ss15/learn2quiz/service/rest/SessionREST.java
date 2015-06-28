@@ -9,6 +9,15 @@ import java.util.Collection;
 
 
 
+
+
+import java.util.Iterator;
+import java.util.List;
+
+
+
+
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -23,12 +32,17 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
+import de.fhkoeln.gm.eis.ss15.learn2quiz.service.XMPPHandler;
+import de.fhkoeln.gm.eis.ss15.learn2quiz.service.entities.TblistTeil;
 import de.fhkoeln.gm.eis.ss15.learn2quiz.service.entities.Tblspielsession;
+import de.fhkoeln.gm.eis.ss15.learn2quiz.service.entities.Tbluser;
+import de.fhkoeln.gm.eis.ss15.learn2quiz.service.rest.IstTeilREST;
 
 
 @Path("/session")
@@ -111,7 +125,49 @@ public class SessionREST {
 	
 	
 	
+    @POST
+    @Path("/start")
+    public Response startSession(@QueryParam("init") String idUser, 
+    		@QueryParam("grpId") String idGroup, 
+    		@QueryParam("setId") String idSet){
+    	
+        int initRanking;
+        final double rankingFactor = 0.33;
+        List<Tbluser> myPlayers;
+        XMPPHandler xmppHandler = new XMPPHandler();
+    	
+    	Tbluser initiator = em.find(Tbluser.class, idUser);
+    	initRanking = initiator.getDtPunktzahl();
+    	// Get all users from the group
+    	Collection<TblistTeil> groupUsers = getUserByGroup(idGroup);
+    	Iterator<TblistTeil> it = groupUsers.iterator();
+    	while (it.hasNext()) {
+    		TblistTeil row = it.next();
+    		int playerRanking = row.getTbluser().getDtPunktzahl();
+			if(((playerRanking) >= (initRanking-(initRanking*rankingFactor)))
+				&& (playerRanking <= (initRanking+(initRanking*rankingFactor)))) 
+			{
+				// User fits into ranking
+				myPlayers.add(row.getTbluser());
+			}
+    	}
+    	
+    	xmppHandler.
+    	
+    	
+ 
+        //Build a uri with the spielsession id appended to the absolute path
+        //This is so the client gets the spielsession id and also has the path to the resource created
+        //URI spielsessionUri = uriInfo.getAbsolutePathBuilder().path().build();
+ 
+        //The created response will not have a body. The spielsessionUri will be in the Header
+        return Response.created(spielsessionUri).build();
+    }
 	
-	
-	
+  //--------------Helper Classes
+
+    public Collection<TblistTeil> getUserByGroup(String idGroup){
+        TypedQuery<TblistTeil> query = em.createNamedQuery("istteil.findUsersByGroup", TblistTeil.class);
+        return query.getResultList();
+    }
 }

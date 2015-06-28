@@ -13,7 +13,10 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @XmlRootElement
 @Entity
-@NamedQuery(name="TblistTeil.findAll", query="SELECT t FROM TblistTeil t")
+@NamedQueries({
+	@NamedQuery(name="TblistTeil.findAll", query="SELECT t FROM TblistTeil t"),
+	@NamedQuery(name="TblistTeil.findUsersByGroup", query="SELECT t FROM TblistTeil t WHERE t.id.fiGruppe = :groupId")
+})
 public class TblistTeil implements Serializable {
 	private static final long serialVersionUID = 1L;
 

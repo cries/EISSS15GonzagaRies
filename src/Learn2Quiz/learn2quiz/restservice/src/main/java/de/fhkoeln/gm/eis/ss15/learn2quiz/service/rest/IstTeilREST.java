@@ -7,6 +7,7 @@ import java.util.Collection;
 
 
 
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -27,6 +28,7 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
 import de.fhkoeln.gm.eis.ss15.learn2quiz.service.entities.TblistTeil;
+import de.fhkoeln.gm.eis.ss15.learn2quiz.service.entities.Tblspielsession;
 
 
 @Path("/istteil")
@@ -107,4 +109,8 @@ public class IstTeilREST {
         em.remove(istteil);
         return Response.noContent().build();
     }
+
+    
+    
+    
 }

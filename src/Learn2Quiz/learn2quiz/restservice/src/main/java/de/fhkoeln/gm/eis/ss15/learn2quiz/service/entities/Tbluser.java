@@ -19,7 +19,6 @@ import java.util.List;
 @Entity
 @NamedQueries({
 	@NamedQuery(name="Tbluser.findAll", query="SELECT t FROM Tbluser t"), 
-	@NamedQuery(name="Tbluser.findGroups", query="SELECT DISTINCT g FROM Tblgruppe g WHERE g.tbluser = :userid")
 })
 public class Tbluser implements Serializable {
 	private static final long serialVersionUID = 1L;
