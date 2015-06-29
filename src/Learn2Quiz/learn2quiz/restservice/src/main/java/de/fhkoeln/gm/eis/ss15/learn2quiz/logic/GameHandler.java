@@ -25,6 +25,10 @@ public class GameHandler {
 	
 	public XMPPHandler myXMPPHandler;
 	
+	/**
+	 * Create a new GameHandler
+	 * Connects to XMPP Server
+	 */
 	public GameHandler(){
 		myXMPPHandler = new XMPPHandler();
 		if (myXMPPHandler.connect("localhost", 5222)) {
@@ -34,6 +38,17 @@ public class GameHandler {
 		}	
 	}
 	
+	/**
+	 * Creates a new game session and invites other players from the same group
+	 * Players are chosen by their ranking. The current setting matches players 
+	 * who are in 33% +/- range of the initiator's ranking.
+	 * After matching the players, they're invited by an asynchronous notification
+	 * 
+	 * @param idUser The session initiator	
+	 * @param idGroup The group to play in
+	 * @param idCardset The cardset that will be played
+	 * @return Session ID or null
+	 */
 	public String newSession(String idUser, String idGroup, String idCardset) {
 		int initRanking;
 		// Tolerance parameter for the ranking (+/-)
@@ -78,19 +93,31 @@ public class GameHandler {
     	return newSession.getIdSpielsession();
 	}
 	
-	//
-	public Response notifyUserComment(Tblkommentar newComment){
+	/**
+	 * Notifies users upon entry of a new comment
+	 * Notifications are sent to all users in the group (broadcast)
+	 * The message includes the comment author & the involved card question
+	 * 
+	 * @param newComment The newly created comment of type Tblkommentar
+	 */
+	public void notifyUserComment(Tblkommentar newComment){
+		// Extract card object from the comment object
 		Tblkarteikarte myCard = newComment.getTblkarteikarte();
-		// 
+		// Extract group object from the card object
 		Tblgruppe myGroup = newComment.getTblkarteikarte().getTblkartenset().getTblgruppe();
-		//
+		
+		// Send asynchronous broadcast message to users in the concerned group 
 		myXMPPHandler.publishItemPayload(myGroup.getIdGruppe() + "_comments", "newcomment" , 
 				"<newcomment><author>" + newComment.getTbluser().getIdUser() + "</author>"
 						+ "<cardquestion>" + myCard.getDtFrage() + "</cardquestion></newcomment>");
 		
-		return Response.ok().build();
 	}
 
+	/**
+	 * Returns a list of all users in group idGroup
+	 * @param idGroup the group id
+	 * @return Collection of TblistTeil
+	 */
     public Collection<TblistTeil> getUserByGroup(String idGroup){
         TypedQuery<TblistTeil> query = em.createNamedQuery("istteil.findUsersByGroup", TblistTeil.class);
         return query.getResultList();
