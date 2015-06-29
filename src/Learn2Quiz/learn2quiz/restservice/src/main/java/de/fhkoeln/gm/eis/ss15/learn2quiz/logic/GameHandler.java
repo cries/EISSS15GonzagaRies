@@ -104,12 +104,14 @@ public class GameHandler {
 		// Extract card object from the comment object
 		Tblkarteikarte myCard = newComment.getTblkarteikarte();
 		// Extract group object from the card object
-		Tblgruppe myGroup = newComment.getTblkarteikarte().getTblkartenset().getTblgruppe();
+		Tblgruppe myGroup = myCard.getTblkartenset().getTblgruppe();
 		
 		// Send asynchronous broadcast message to users in the concerned group 
 		myXMPPHandler.publishItemPayload(myGroup.getIdGruppe() + "_comments", "newcomment" , 
-				"<newcomment><author>" + newComment.getTbluser().getIdUser() + "</author>"
-						+ "<cardquestion>" + myCard.getDtFrage() + "</cardquestion></newcomment>");
+				"<newcomment>"
+						+ "<author>" + newComment.getTbluser().getIdUser() + "</author>"
+						+ "<cardquestion>" + myCard.getDtFrage() + "</cardquestion>"
+				+ "</newcomment>");
 		
 	}
 

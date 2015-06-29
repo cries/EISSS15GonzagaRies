@@ -69,7 +69,6 @@ public class Learn2Quiz extends Game {
 		mySkin = new Skin( Gdx.files.internal( "uiskin.json" ));
 		myRESTHandler = new RESTHandler("localhost", 8080);
 		myWelcomeScreen = new WelcomeScreen(this);
-		//myLoginScreen = new LoginScreen(this);
 		setScreen(myWelcomeScreen);
 	}
 
