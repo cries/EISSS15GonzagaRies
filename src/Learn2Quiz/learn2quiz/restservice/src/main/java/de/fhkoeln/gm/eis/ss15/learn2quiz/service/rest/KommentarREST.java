@@ -58,7 +58,7 @@ public class KommentarREST {
         }
         em.persist(kommentar);
         	
- 
+        gameHandler.notifyUserComment(kommentar);
         //Build a uri with the kommentar id appended to the absolute path
         //This is so the client gets the kommentar id and also has the path to the resource created
         URI kommentarUri = uriInfo.getAbsolutePathBuilder().path(kommentar.getIdKommentar()).build();
