@@ -38,15 +38,10 @@ import de.fhkoeln.gm.eis.ss15.learn2quiz.service.entities.Tbluser;
 @Consumes ({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
 @Stateless
 public class UserREST {
-	//the PersistenceContext annotation is a shortcut that hides the fact
-    //that, an entity manager is always obtained from an EntityManagerFactory.
-    //The peristitence.xml file defines persistence units which is supplied by name
-    //to the EntityManagerFactory, thus  dictating settings and classes used by the
-    //entity manager
+	
     @PersistenceContext(unitName = "learn2quizPU")
     private EntityManager em;
  
-    //Inject UriInfo to build the uri used in the POST response
     @Context
     private UriInfo uriInfo;
  
@@ -57,11 +52,8 @@ public class UserREST {
         }
         em.persist(user);
  
-        //Build a uri with the user id appended to the absolute path
-        //This is so the client gets the user id and also has the path to the resource created
         URI userUri = uriInfo.getAbsolutePathBuilder().path(user.getIdUser()).build();
  
-        //The created response will not have a body. The userUri will be in the Header
         return Response.created(userUri).build();
     }
  
@@ -77,25 +69,12 @@ public class UserREST {
         return Response.ok(user).build();
     }
  
-    //Response.ok() does not accept collections
-    //But we return a collection and JAX-RS will generate header 200 OK and
-    //will handle converting the collection to xml or json as the body
     @GET
     public Collection<Tbluser> getusers(){
         TypedQuery<Tbluser> query = em.createNamedQuery("Tbluser.findAll", Tbluser.class);
         return query.getResultList();
     }
-    
-//    @GET
-//    @Path("{id}/groups")
-//    public Collection<Tblgruppe> getgroups(@PathParam("id") String id){
-//    	//TypedQuery<Tbluser> query = em.createNamedQuery("Tbluser.findGroups", Tbluser.class).setParameter("userid", id);
-//    	Tbluser myUser = em.find(Tbluser.class, id);
-//    	System.out.println(myUser.toString());
-//		//return query.getResultList();
-//    	return myUser.getTblgruppes();
-//    }
-    
+   
     
 	@GET
 	@Path("{id}/groups")
@@ -111,7 +90,6 @@ public class UserREST {
             throw new BadRequestException();
         }
  
-        //Ideally we should check the id is a valid UUID. Not implementing for now
         user.setIdUser(id);
         em.merge(user);
  

@@ -38,15 +38,9 @@ import de.fhkoeln.gm.eis.ss15.learn2quiz.service.entities.Tblkarteikarte;
 @Stateless
 public class KarteikarteREST {
 
-	//the PersistenceContext annotation is a shortcut that hides the fact
-    //that, an entity manager is always obtained from an EntityManagerFactory.
-    //The peristitence.xml file defines persistence units which is supplied by name
-    //to the EntityManagerFactory, thus  dictating settings and classes used by the
-    //entity manager
     @PersistenceContext(unitName = "learn2quizPU")
     private EntityManager em;
  
-    //Inject UriInfo to build the uri used in the POST response
     @Context
     private UriInfo uriInfo;
  
@@ -57,11 +51,8 @@ public class KarteikarteREST {
         }
         em.persist(karteikarte);
  
-        //Build a uri with the karteikarte id appended to the absolute path
-        //This is so the client gets the karteikarte id and also has the path to the resource created
         URI karteikarteUri = uriInfo.getAbsolutePathBuilder().path(karteikarte.getIdKarteikarte()).build();
  
-        //The created response will not have a body. The karteikarteUri will be in the Header
         return Response.created(karteikarteUri).build();
     }
  
@@ -77,9 +68,6 @@ public class KarteikarteREST {
         return Response.ok(karteikarte).build();
     }
  
-    //Response.ok() does not accept collections
-    //But we return a collection and JAX-RS will generate header 200 OK and
-    //will handle converting the collection to xml or json as the body
     @GET
     public Collection<Tblkarteikarte> getkarteikartes(){
         TypedQuery<Tblkarteikarte> query = em.createNamedQuery("Tblkarteikarte.findAll", Tblkarteikarte.class);
@@ -95,7 +83,6 @@ public class KarteikarteREST {
             throw new BadRequestException();
         }
  
-        //Ideally we should check the id is a valid UUID. Not implementing for now
         karteikarte.setIdKarteikarte(id);
         em.merge(karteikarte);
  

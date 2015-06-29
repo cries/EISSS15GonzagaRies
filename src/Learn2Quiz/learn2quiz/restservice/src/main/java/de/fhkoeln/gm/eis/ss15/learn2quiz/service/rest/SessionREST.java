@@ -115,7 +115,6 @@ public class SessionREST {
     
     @POST
     @Path("/start")
-    // Start a new game session 
     public Response startSession(@QueryParam("init") String idUser, 
     		@QueryParam("grpid") String idGroup, 
     		@QueryParam("setid") String idCardset){

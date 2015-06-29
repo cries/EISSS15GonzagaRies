@@ -42,15 +42,10 @@ import de.fhkoeln.gm.eis.ss15.learn2quiz.service.entities.Tblkartenset;
 @Consumes ({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
 @Stateless
 public class KartenSetREST {
-	//the PersistenceContext annotation is a shortcut that hides the fact
-    //that, an entity manager is always obtained from an EntityManagerFactory.
-    //The peristitence.xml file defines persistence units which is supplied by name
-    //to the EntityManagerFactory, thus  dictating settings and classes used by the
-    //entity manager
+	
     @PersistenceContext(unitName = "learn2quizPU")
     private EntityManager em;
  
-    //Inject UriInfo to build the uri used in the POST response
     @Context
     private UriInfo uriInfo;
  
@@ -61,11 +56,8 @@ public class KartenSetREST {
         }
         em.persist(kartenset);
  
-        //Build a uri with the kartenset id appended to the absolute path
-        //This is so the client gets the kartenset id and also has the path to the resource created
         URI kartensetUri = uriInfo.getAbsolutePathBuilder().path(kartenset.getIdKartenset()).build();
  
-        //The created response will not have a body. The kartensetUri will be in the Header
         return Response.created(kartensetUri).build();
     }
  
@@ -80,15 +72,6 @@ public class KartenSetREST {
  
         return Response.ok(kartenset).build();
     }
- 
-//    //Response.ok() does not accept collections
-//    //But we return a collection and JAX-RS will generate header 200 OK and
-//    //will handle converting the collection to xml or json as the body
-//    @GET
-//    public Collection<Tblkartenset> getkartensets(){
-//        TypedQuery<Tblkartenset> query = em.createNamedQuery("Tblkartenset.findAll", Tblkartenset.class);
-//        return query.getResultList();
-//    }
     
     @GET
     @Path("{id}/cards")
@@ -104,7 +87,7 @@ public class KartenSetREST {
             throw new BadRequestException();
         }
  
-        //Ideally we should check the id is a valid UUID. Not implementing for now
+        
         kartenset.setIdKartenset(id);
         em.merge(kartenset);
  
